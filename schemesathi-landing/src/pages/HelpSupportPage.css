@@ -1,0 +1,316 @@
+/* ===================================================
+   HELP & SUPPORT PAGE STYLES
+   Theme: Neumorphism & Soft Organic UI
+   Tactile channel cards, inset search well & clay form blocks
+   =================================================== */
+
+.help-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Help Hero Banner - Soft Sky Blue & Sage Neumorphic Canopy */
+.help-hero-banner {
+  background: 
+    radial-gradient(circle at 12% 25%, rgba(216, 239, 252, 0.85) 0%, transparent 55%),
+    radial-gradient(circle at 88% 75%, rgba(222, 242, 234, 0.8) 0%, transparent 55%),
+    linear-gradient(135deg, #d8effc 0%, #e3f4fd 42%, #e5f2eb 78%, #ecf4ef 100%);
+  border-radius: 20px;
+  padding: 38px 32px;
+  color: #0f2e5a;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 6px 18px rgba(155, 175, 160, 0.35), -6px -6px 18px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+}
+
+.help-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.help-hero-banner h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f2e5a;
+  margin-bottom: 8px;
+  letter-spacing: -0.4px;
+}
+
+.help-hero-banner p {
+  font-size: 14.5px;
+  color: #385775;
+  max-width: 580px;
+  margin: 0 auto 22px;
+  line-height: 1.5;
+}
+
+.help-search-container {
+  max-width: 540px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.help-search-container input {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px 0 50px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  font-weight: 500;
+  color: #1b2d22;
+  background: #edf3ee;
+  outline: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), inset 1px 1px 3px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.help-search-container input:focus {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.help-search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2d6a4f;
+  font-size: 16px;
+  z-index: 2;
+}
+
+/* 2 Direct Support Channels - Neumorphic Clay Tiles */
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .channels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.channel-card {
+  background: #edf3ee;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 6px 6px 16px rgba(155, 175, 160, 0.4), -6px -6px 16px #ffffff;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.channel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 9px 9px 22px rgba(145, 168, 150, 0.48), -9px -9px 22px #ffffff;
+  border-color: rgba(45, 106, 79, 0.35);
+}
+
+.channel-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #e1efe3;
+  color: #2d6a4f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 0 auto 14px;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.35), -3px -3px 8px #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.channel-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #1b2d22;
+  margin-bottom: 4px;
+}
+
+.channel-info {
+  font-size: 13.5px;
+  color: #2d6a4f;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.channel-sub {
+  font-size: 12px;
+  color: #52685a;
+  font-weight: 500;
+}
+
+/* Help Sections Layout (FAQs + Grievance Form) */
+.help-sections-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+}
+
+@media (max-width: 992px) {
+  .help-sections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.help-block-card {
+  background: #edf3ee;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  padding: 26px;
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+}
+
+.help-block-title {
+  font-size: 17.5px;
+  font-weight: 800;
+  color: #1b4332;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(162, 180, 166, 0.35);
+}
+
+.help-block-title i {
+  color: #2d6a4f;
+}
+
+/* FAQ Accordion - Tactile Panels */
+.faq-accordion-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 4px 4px 10px rgba(155, 175, 160, 0.3), -4px -4px 10px #ffffff;
+  transition: all 0.2s ease;
+}
+
+.faq-item.open {
+  border-color: rgba(45, 106, 79, 0.35);
+  box-shadow: 6px 6px 14px rgba(145, 168, 150, 0.4), -6px -6px 14px #ffffff;
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 15px 18px;
+  background: #edf3ee;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1b2d22;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.faq-question-btn:hover {
+  background: #f2f7f3;
+  color: #2d6a4f;
+}
+
+.faq-item.open .faq-question-btn {
+  background: #e1efe3;
+  color: #1b4332;
+}
+
+.faq-answer-body {
+  padding: 16px 20px;
+  font-size: 13.5px;
+  color: #4a5e52;
+  line-height: 1.6;
+  background: #edf3ee;
+  border-top: 1px solid rgba(162, 180, 166, 0.25);
+  box-shadow: inset 1px 1px 3px rgba(155, 174, 159, 0.2);
+}
+
+/* Grievance Form */
+.grievance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group-item label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a5e52;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.form-input-field,
+.form-select-field,
+.form-textarea-field {
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1b2d22;
+  background: #e2ebe3;
+  outline: none;
+  font-family: inherit;
+  box-shadow: inset 3px 3px 6px rgba(155, 174, 159, 0.45), inset -3px -3px 6px #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-input-field:focus,
+.form-select-field:focus,
+.form-textarea-field:focus {
+  background: #e6ede7;
+  border-color: rgba(45, 106, 79, 0.4);
+  box-shadow: inset 3px 3px 6px rgba(155, 174, 159, 0.45), inset -3px -3px 6px #ffffff, 0 0 0 2px rgba(45, 106, 79, 0.25);
+}
+
+.btn-submit-ticket {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px 22px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 4px 4px 12px rgba(13, 148, 136, 0.35), inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-top: 6px;
+}
+
+.btn-submit-ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 16px rgba(13, 148, 136, 0.45);
+}

@@ -1,0 +1,303 @@
+/* ===================================================
+   SAVED SCHEMES PAGE STYLES
+   Theme: Neumorphism & Soft Organic UI
+   Tactile bookmark trays, debossed search & clay cards
+   =================================================== */
+
+.saved-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header Box - Neumorphic Tray */
+.saved-header-box {
+  background: #edf3ee;
+  border-radius: 24px;
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+}
+
+.saved-header-left h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1b4332;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.4px;
+}
+
+.saved-header-left h2 i {
+  color: #2d6a4f;
+}
+
+.saved-header-left p {
+  font-size: 14px;
+  color: #52685a;
+}
+
+.saved-counter-badge {
+  background: #e1efe3;
+  color: #1b4332;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 10px 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(45, 106, 79, 0.25);
+  box-shadow: inset 1px 1px 3px rgba(45, 106, 79, 0.15), 3px 3px 8px rgba(155, 175, 160, 0.3);
+  white-space: nowrap;
+}
+
+/* Filter / Search inside saved */
+.saved-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #edf3ee;
+  padding: 16px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 5px 5px 14px rgba(155, 175, 160, 0.35), -5px -5px 14px #ffffff;
+}
+
+.saved-search-input {
+  flex: 1;
+  min-width: 260px;
+  height: 42px;
+  padding: 0 16px;
+  background: #e2ebe3;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1b2d22;
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(155, 174, 159, 0.4), inset -2px -2px 5px #ffffff;
+  transition: all 0.2s ease;
+}
+
+.saved-search-input:focus {
+  background: #e6ede7;
+  border-color: rgba(45, 106, 79, 0.4);
+}
+
+/* Saved Grid & Tactile Cards */
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 22px;
+}
+
+.saved-scheme-card {
+  background: #edf3ee;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.saved-scheme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 10px 10px 24px rgba(145, 168, 150, 0.48), -10px -10px 24px #ffffff;
+  border-color: rgba(45, 106, 79, 0.35);
+}
+
+.saved-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.saved-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.saved-pill.central {
+  background: #e1efe3;
+  color: #1b4332;
+  border: 1px solid rgba(45, 106, 79, 0.2);
+}
+
+.saved-pill.state {
+  background: #e4edf5;
+  color: #1d5570;
+  border: 1px solid rgba(29, 85, 112, 0.2);
+}
+
+.saved-pill.applied {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border: 1px solid rgba(22, 163, 74, 0.35) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.saved-pill.planning {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border: 1px solid rgba(37, 99, 235, 0.35) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.saved-pill.considering {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border: 1px solid rgba(217, 119, 6, 0.35) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.saved-card-title {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #1b2d22;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.saved-card-ministry {
+  font-size: 12px;
+  color: #52685a;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.saved-card-desc {
+  font-size: 13.5px;
+  color: #4a5e52;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.saved-actions-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(162, 180, 166, 0.35);
+}
+
+.btn-remove-saved {
+  background: #f8ebe6;
+  color: #bd3b29;
+  border: 1px solid rgba(189, 59, 41, 0.2);
+  padding: 8px 16px;
+  border-radius: 16px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 2px 2px 6px rgba(189, 59, 41, 0.15);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-remove-saved:hover {
+  background: #f7ded6;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 8px rgba(189, 59, 41, 0.25);
+}
+
+.btn-apply-primary,
+a.btn-apply-primary,
+.explore-all-btn {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 22px;
+  border-radius: 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 4px 4px 12px rgba(13, 148, 136, 0.38), inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-apply-primary *,
+a.btn-apply-primary *,
+.explore-all-btn * {
+  color: #ffffff !important;
+}
+
+.btn-apply-primary:hover,
+a.btn-apply-primary:hover,
+.explore-all-btn:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 16px rgba(13, 148, 136, 0.48);
+}
+
+/* Empty State - Neumorphic Pebble */
+.saved-empty-container {
+  background: #edf3ee;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  padding: 64px 28px;
+  text-align: center;
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+}
+
+.saved-empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #ccfbf1;
+  color: #0d9488;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 4px 4px 12px rgba(155, 175, 160, 0.35), -4px -4px 12px #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.saved-empty-container h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1b2d22;
+  margin-bottom: 8px;
+}
+
+.saved-empty-container p {
+  font-size: 14px;
+  color: #52685a;
+  max-width: 480px;
+  margin: 0 auto 22px;
+}

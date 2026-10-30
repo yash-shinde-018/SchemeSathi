@@ -1,0 +1,196 @@
+/* ============================================================
+   NEUMORPHISM DESIGN TOKENS
+   Soft UI shadow and color palette for neumorphic components
+   ============================================================ */
+
+:root {
+  /* ============================================================
+     NEUMORPHISM COLOR PALETTE
+     ============================================================ */
+  
+  /* Background Colors - Very light, neutral gray */
+  --neumorphism-bg-primary: #E0E5EC;      /* Primary background */
+  --neumorphism-bg-secondary: #F0F3F7;    /* Secondary/surface background */
+  --neumorphism-bg-light: #F8FAFC;        /* Lightest background */
+  --neumorphism-bg-dark: #D0D5DC;         /* Darker background */
+  
+  /* Text Colors */
+  --neumorphism-text-primary: #353535;     /* Main text */
+  --neumorphism-text-secondary: #6B7280;   /* Secondary text */
+  --neumorphism-text-light: #9CA3AF;       /* Light text */
+  
+  /* Shadow Colors - For soft, subtle depth */
+  --neumorphism-shadow-light: rgba(255, 255, 255, 0.8);      /* Light shadow (highlight) */
+  --neumorphism-shadow-dark: rgba(0, 0, 0, 0.1);             /* Dark shadow (depth) */
+  --neumorphism-shadow-dark-strong: rgba(0, 0, 0, 0.15);     /* Stronger dark shadow */
+  
+  /* ============================================================
+     NEUMORPHIC SHADOW RECIPES
+     ============================================================ */
+  
+  /* Outset Shadows (Raised/Extruded Effect) */
+  --neumorphism-shadow-outset-sm: 
+    -2px -2px 8px var(--neumorphism-shadow-light),
+    2px 2px 8px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-shadow-outset-md: 
+    -4px -4px 12px var(--neumorphism-shadow-light),
+    4px 4px 12px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-shadow-outset-lg: 
+    -8px -8px 24px var(--neumorphism-shadow-light),
+    8px 8px 24px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-shadow-outset-xl: 
+    -12px -12px 32px var(--neumorphism-shadow-light),
+    12px 12px 32px var(--neumorphism-shadow-dark);
+  
+  /* Inset Shadows (Recessed/Pressed Effect) */
+  --neumorphism-shadow-inset-sm: 
+    inset -2px -2px 8px var(--neumorphism-shadow-light),
+    inset 2px 2px 8px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-shadow-inset-md: 
+    inset -4px -4px 12px var(--neumorphism-shadow-light),
+    inset 4px 4px 12px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-shadow-inset-lg: 
+    inset -8px -8px 24px var(--neumorphism-shadow-light),
+    inset 8px 8px 24px var(--neumorphism-shadow-dark);
+  
+  /* Flat Shadows (Minimal depth) */
+  --neumorphism-shadow-flat: 
+    -1px -1px 3px var(--neumorphism-shadow-light),
+    1px 1px 3px var(--neumorphism-shadow-dark);
+  
+  /* ============================================================
+     NEUMORPHIC BUTTON STYLES
+     ============================================================ */
+  
+  /* Primary Button - Raised effect */
+  --neumorphism-button-primary-bg: linear-gradient(135deg, #E0E5EC 0%, #D0D5DC 100%);
+  --neumorphism-button-primary-shadow: 
+    -4px -4px 12px var(--neumorphism-shadow-light),
+    4px 4px 12px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-button-primary-shadow-hover: 
+    -2px -2px 8px var(--neumorphism-shadow-light),
+    2px 2px 8px var(--neumorphism-shadow-dark-strong);
+  
+  --neumorphism-button-primary-shadow-active: 
+    inset -2px -2px 8px var(--neumorphism-shadow-light),
+    inset 2px 2px 8px var(--neumorphism-shadow-dark);
+  
+  /* ============================================================
+     NEUMORPHIC INPUT STYLES
+     ============================================================ */
+  
+  --neumorphism-input-bg: #F0F3F7;
+  --neumorphism-input-shadow: 
+    inset -2px -2px 8px var(--neumorphism-shadow-light),
+    inset 2px 2px 8px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-input-shadow-focus: 
+    inset -2px -2px 8px var(--neumorphism-shadow-light),
+    inset 2px 2px 8px var(--neumorphism-shadow-dark),
+    0 0 0 3px rgba(67, 56, 202, 0.2);
+  
+  /* ============================================================
+     NEUMORPHIC CARD STYLES
+     ============================================================ */
+  
+  --neumorphism-card-bg: #E0E5EC;
+  --neumorphism-card-shadow: 
+    -8px -8px 24px var(--neumorphism-shadow-light),
+    8px 8px 24px var(--neumorphism-shadow-dark);
+  
+  --neumorphism-card-shadow-hover: 
+    -6px -6px 20px var(--neumorphism-shadow-light),
+    6px 6px 20px var(--neumorphism-shadow-dark-strong);
+  
+  /* ============================================================
+     NEUMORPHIC TYPOGRAPHY
+     ============================================================ */
+  
+  --neumorphism-text-color: var(--neumorphism-text-primary);
+  --neumorphism-text-secondary-color: var(--neumorphism-text-secondary);
+  
+  /* ============================================================
+     NEUMORPHIC TRANSITIONS
+     ============================================================ */
+  
+  --neumorphism-transition-fast: 150ms ease-in-out;
+  --neumorphism-transition-normal: 300ms ease-in-out;
+  --neumorphism-transition-slow: 500ms ease-in-out;
+  
+  /* ============================================================
+     NEUMORPHIC BORDER RADIUS
+     ============================================================ */
+  
+  --neumorphism-radius-sm: 8px;
+  --neumorphism-radius-md: 12px;
+  --neumorphism-radius-lg: 16px;
+  --neumorphism-radius-xl: 20px;
+  --neumorphism-radius-full: 9999px;
+}
+
+/* ============================================================
+   DARK MODE SUPPORT - Alternative Neumorphism Palette
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode background colors */
+    --neumorphism-bg-primary: #2A2A3E;
+    --neumorphism-bg-secondary: #323248;
+    --neumorphism-bg-light: #383850;
+    --neumorphism-bg-dark: #1F1F2E;
+    
+    /* Dark mode text colors */
+    --neumorphism-text-primary: #E8E8F0;
+    --neumorphism-text-secondary: #A0A0B0;
+    --neumorphism-text-light: #707080;
+    
+    /* Dark mode shadow colors */
+    --neumorphism-shadow-light: rgba(255, 255, 255, 0.1);
+    --neumorphism-shadow-dark: rgba(0, 0, 0, 0.5);
+    --neumorphism-shadow-dark-strong: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES - Optional helper classes for neumorphism
+   ============================================================ */
+
+.neumorphic-raised {
+  box-shadow: var(--neumorphism-shadow-outset-md);
+  border-radius: var(--neumorphism-radius-lg);
+  background: var(--neumorphism-bg-primary);
+}
+
+.neumorphic-raised:hover {
+  box-shadow: var(--neumorphism-shadow-outset-lg);
+}
+
+.neumorphic-raised:active {
+  box-shadow: var(--neumorphism-shadow-inset-md);
+}
+
+.neumorphic-recessed {
+  box-shadow: var(--neumorphism-shadow-inset-md);
+  border-radius: var(--neumorphism-radius-lg);
+  background: var(--neumorphism-bg-secondary);
+}
+
+.neumorphic-flat {
+  box-shadow: var(--neumorphism-shadow-flat);
+  border-radius: var(--neumorphism-radius-md);
+  background: var(--neumorphism-bg-primary);
+}
+
+/* Smooth transitions for all neumorphic elements */
+.neumorphic-raised,
+.neumorphic-recessed,
+.neumorphic-flat {
+  transition: box-shadow var(--neumorphism-transition-fast);
+}

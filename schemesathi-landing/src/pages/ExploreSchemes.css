@@ -1,0 +1,417 @@
+/* ===================================================
+   FIND SCHEMES / EXPLORE SCHEMES STYLES
+   Theme: Neumorphism & Soft Organic UI
+   Tactile filter tray, debossed search, raised organic cards
+   =================================================== */
+
+.find-schemes-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header Filter Console - Neumorphic Tray */
+.find-header-box {
+  background: #edf3ee;
+  border-radius: 24px;
+  padding: 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+}
+
+.find-header-box h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1b4332;
+  margin-bottom: 6px;
+  letter-spacing: -0.4px;
+}
+
+.find-header-box p {
+  font-size: 14px;
+  color: #52685a;
+  margin-bottom: 22px;
+}
+
+/* Page Search Bar */
+.page-search-bar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.search-input-group {
+  position: relative;
+  flex: 1;
+}
+
+.search-input-group i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2d6a4f;
+  font-size: 15px;
+}
+
+.page-search-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px 0 48px !important;
+  background: #e2ebe3;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1b2d22;
+  outline: none;
+  font-family: inherit;
+  box-shadow: inset 3px 3px 6px rgba(155, 174, 159, 0.45), inset -3px -3px 6px #ffffff;
+  transition: all 0.2s ease;
+}
+
+.page-search-input:focus {
+  background: #e6ede7;
+  border-color: rgba(45, 106, 79, 0.4);
+  box-shadow: inset 3px 3px 6px rgba(155, 174, 159, 0.45), inset -3px -3px 6px #ffffff, 0 0 0 2px rgba(45, 106, 79, 0.25);
+}
+
+.search-submit-btn {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0 26px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 5px 5px 14px rgba(13, 148, 136, 0.35), inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.search-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 7px 7px 18px rgba(13, 148, 136, 0.45);
+}
+
+/* Category Filter Chips - Neumorphic Pebbles */
+.category-chips-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 8px 4px 14px;
+  scrollbar-width: thin;
+  flex-wrap: nowrap;
+}
+
+.cat-chip {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #edf3ee;
+  color: #1b2d22;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.35), -3px -3px 8px #ffffff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cat-chip:hover {
+  color: #0f766e;
+  box-shadow: 5px 5px 12px rgba(13, 148, 136, 0.2), -5px -5px 12px #ffffff;
+  transform: translateY(-1px);
+}
+
+.cat-chip.active {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  box-shadow: 4px 4px 12px rgba(13, 148, 136, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(0);
+}
+
+/* Secondary Filter Controls */
+.secondary-filters-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 0 4px;
+  border-top: 1px solid rgba(162, 180, 166, 0.35);
+}
+
+.filters-left-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-select-mini {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1b2d22;
+  background: #e2ebe3;
+  cursor: pointer;
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(155, 174, 159, 0.4), inset -2px -2px 5px #ffffff;
+  transition: all 0.2s ease;
+}
+
+.filter-select-mini:focus {
+  background: #e6ede7;
+  border-color: rgba(45, 106, 79, 0.4);
+}
+
+.results-count-text {
+  font-size: 13.5px;
+  color: #52685a;
+  font-weight: 600;
+}
+
+/* Schemes Grid & Tactile Cards */
+.explore-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 22px;
+}
+
+.explore-card {
+  background: #edf3ee;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.explore-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 10px 10px 24px rgba(145, 168, 150, 0.48), -10px -10px 24px #ffffff;
+  border-color: rgba(45, 106, 79, 0.35);
+}
+
+.card-top-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.card-pill-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.card-pill-tag.central {
+  background: #e1efe3;
+  color: #1b4332;
+  border: 1px solid rgba(45, 106, 79, 0.2);
+}
+
+.card-pill-tag.state {
+  background: #e4edf5;
+  color: #1d5570;
+  border: 1px solid rgba(29, 85, 112, 0.2);
+}
+
+.card-pill-tag.category {
+  background: #e2e8e3;
+  color: #385042;
+  box-shadow: inset 1px 1px 3px rgba(155, 174, 159, 0.3), inset -1px -1px 3px #ffffff;
+}
+
+.card-pill-tag.applied {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border: 1px solid rgba(22, 163, 74, 0.35) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-pill-tag.planning {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border: 1px solid rgba(37, 99, 235, 0.35) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-pill-tag.considering {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border: 1px solid rgba(217, 119, 6, 0.35) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.explore-card.is-applied {
+  border-left: 4px solid #16a34a !important;
+}
+
+.card-bookmark-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #edf3ee;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.35), -3px -3px 8px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4a5e52;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-bookmark-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 12px rgba(145, 168, 150, 0.45), -5px -5px 12px #ffffff;
+  color: #2d6a4f;
+}
+
+.card-bookmark-btn:active {
+  box-shadow: inset 2px 2px 5px rgba(155, 174, 159, 0.5), inset -2px -2px 5px #ffffff;
+  transform: scale(0.95);
+}
+
+.explore-card-title {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #1b2d22;
+  margin-bottom: 8px;
+  line-height: 1.35;
+  padding-right: 32px;
+}
+
+.explore-card-ministry {
+  font-size: 12px;
+  color: #52685a;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.explore-card-desc {
+  font-size: 13.5px;
+  color: #4a5e52;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.card-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(162, 180, 166, 0.35);
+  gap: 12px;
+}
+
+.meta-mode-badge {
+  font-size: 12px;
+  color: #2d6a4f;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-details-btn {
+  background: #edf3ee;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  padding: 8px 18px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1b2d22;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.35), -3px -3px 8px #ffffff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-details-btn:hover {
+  background: linear-gradient(135deg, #0d9488, #0f766e) !important;
+  color: #ffffff !important;
+  box-shadow: 4px 4px 12px rgba(13, 148, 136, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Pagination Bar - Neumorphic Pebble Controls */
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.page-btn {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #edf3ee;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1b2d22;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 4px 4px 10px rgba(155, 175, 160, 0.35), -4px -4px 10px #ffffff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #ffffff !important;
+  box-shadow: 6px 6px 14px rgba(13, 148, 136, 0.2), -6px -6px 14px #ffffff;
+  color: #0f766e !important;
+  transform: translateY(-2px);
+}
+
+.page-btn:disabled {
+  opacity: 0.45;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.page-indicator-text {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #52685a;
+}

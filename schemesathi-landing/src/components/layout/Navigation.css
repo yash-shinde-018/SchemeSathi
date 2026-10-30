@@ -1,0 +1,590 @@
+/**
+ * Navigation Component Styles - Premium Minimal Redesign
+ * 
+ * Desktop: Clean horizontal navbar
+ * Mobile: Modern floating curved bottom navigation with:
+ *   - Glassmorphism surface (rgba + backdrop blur)
+ *   - Curved notched design
+ *   - Floating circular FAB button
+ *   - Smooth transitions and interactions
+ *   - Accessibility-first design
+ */
+
+/* ============================================================
+   Desktop Navigation
+   ============================================================ */
+
+.navigation--desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  width: auto;
+  flex: 0;
+  position: relative;
+}
+
+.navigation__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.navigation__menu--desktop {
+  display: none;
+  margin: 0;
+  gap: 45px;
+}
+
+@media (min-width: 1024px) {
+  .navigation__menu--desktop {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+}
+
+.navigation__item {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.navigation__link {
+  display: inline-block;
+  padding: 8px 14px;
+  color: var(--color-text-primary);
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+  border-radius: 6px;
+  position: relative;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  background-color: transparent;
+  border-bottom: none !important;
+}
+
+.navigation__link:hover {
+  color: #4338CA;
+  background-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: none;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.navigation__link--active {
+  color: #4338CA !important;
+  font-weight: 700 !important;
+}
+
+.navigation__link:focus {
+  outline: 3px solid #4338CA;
+  outline-offset: 2px;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.navigation__link:active {
+  color: #3730A3;
+  transform: translateY(0);
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.navigation__link:visited {
+  text-decoration: none !important;
+}
+
+/* ============================================================
+   Language Selector (Desktop)
+   ============================================================ */
+
+.navigation__language {
+  display: none;
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+@media (min-width: 1024px) {
+  .navigation__language {
+    display: block;
+  }
+}
+
+/* ============================================================
+   CTA Button (Desktop)
+   ============================================================ */
+
+.navigation__cta {
+  display: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 13px;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  background: linear-gradient(135deg, #4338CA 0%, #5D4FDB 100%) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  box-shadow: 0 4px 16px rgba(67, 56, 202, 0.3) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.navigation__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.navigation__cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 24px rgba(67, 56, 202, 0.4) !important;
+  background: linear-gradient(135deg, #5D4FDB 0%, #4338CA 100%) !important;
+}
+
+.navigation__cta:hover::before {
+  opacity: 1;
+}
+
+.navigation__cta:active {
+  transform: translateY(0) !important;
+}
+
+@media (min-width: 1024px) {
+  .navigation__cta {
+    display: inline-block;
+  }
+}
+
+/* ============================================================
+   Mobile Floating Curved Navigation
+   ============================================================ */
+
+.navigation--mobile-floating {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  width: 100%;
+  pointer-events: none;
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .navigation--mobile-floating {
+    display: block;
+  }
+}
+
+/* ============================================================
+   Floating Navigation Container
+   ============================================================ */
+
+.floating-nav__container {
+  position: relative;
+  width: 100%;
+  padding-bottom: max(60px, calc(60px + env(safe-area-inset-bottom)));
+  pointer-events: auto;
+  background: transparent;
+}
+
+.floating-nav__backdrop {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: max(75px, calc(75px + env(safe-area-inset-bottom)));
+  background: transparent;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  z-index: -1;
+}
+
+/* ============================================================
+   Curved SVG Background
+   ============================================================ */
+
+.floating-nav__curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 0;
+  filter: drop-shadow(0 -4px 12px rgba(0, 0, 0, 0.08));
+  pointer-events: none;
+}
+
+/* ============================================================
+   Navigation Items Container
+   ============================================================ */
+
+.floating-nav__items {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 70px;
+  padding: 0 var(--spacing-md);
+  padding-bottom: max(10px, calc(10px + env(safe-area-inset-bottom)));
+  gap: var(--spacing-sm);
+}
+
+/* ============================================================
+   Individual Navigation Item
+   ============================================================ */
+
+.floating-nav__item {
+  flex: 1;
+  max-width: 70px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #64748B;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 12px;
+  position: relative;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px; /* Accessibility: minimum touch target */
+}
+
+.floating-nav__item:focus-visible {
+  outline: 3px solid #4338CA;
+  outline-offset: -2px;
+}
+
+.floating-nav__item:active {
+  transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav__item {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Navigation Item Icon
+   ============================================================ */
+
+.floating-nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 20px;
+  transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: inherit;
+}
+
+/* ============================================================
+   Navigation Item Label
+   ============================================================ */
+
+.floating-nav__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: inherit;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   Active Navigation Item State
+   ============================================================ */
+
+.floating-nav__item--active {
+  color: #4338CA;
+  transform: translateY(-8px) scale(1.05);
+}
+
+.floating-nav__item--active .floating-nav__label {
+  opacity: 1;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.floating-nav__item--active::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle, rgba(67, 56, 202, 0.1) 0%, transparent 70%);
+  border-radius: 14px;
+  z-index: -1;
+  animation: softGlow 2s ease-in-out infinite;
+}
+
+@keyframes softGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav__item--active {
+    animation: none;
+  }
+
+  .floating-nav__item--active::before {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Floating FAB Button - "Find Schemes"
+   ============================================================ */
+
+.floating-nav__fab {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #4338CA 0%, #3730A3 100%);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 24px rgba(67, 56, 202, 0.3);
+  transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  animation: floatingBreath 3s ease-in-out infinite;
+}
+
+@keyframes floatingBreath {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+.floating-nav__fab:hover {
+  transform: translateX(-50%) scale(1.08);
+  box-shadow: 0 12px 32px rgba(67, 56, 202, 0.4);
+}
+
+.floating-nav__fab:active {
+  transform: translateX(-50%) scale(0.95);
+  animation: none;
+}
+
+.floating-nav__fab:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav__fab {
+    animation: none;
+    transition: none;
+  }
+
+  .floating-nav__fab:hover {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Floating FAB Icon
+   ============================================================ */
+
+.floating-nav__fab-icon {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.5;
+  flex-shrink: 0;
+  transition: all 250ms ease-in-out;
+}
+
+.floating-nav__fab:hover .floating-nav__fab-icon {
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   Floating FAB Label
+   ============================================================ */
+
+.floating-nav__fab-label {
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  opacity: 0.95;
+}
+
+/* ============================================================
+   Floating FAB Active State
+   ============================================================ */
+
+.floating-nav__fab--active {
+  animation: pulse-active 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pulse-active {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav__fab--active {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Responsive: Tablet (768px)
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .floating-nav__items {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+
+  .floating-nav__item {
+    max-width: 80px;
+    height: 60px;
+    padding: 10px 14px;
+  }
+
+  .floating-nav__fab {
+    width: 64px;
+    height: 64px;
+  }
+
+  .floating-nav__fab-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ============================================================
+   Responsive: Large Tablet/Small Desktop (1024px)
+   Desktop navigation takes over at this point
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  .navigation--mobile-floating {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Safe Area Support (iPhone Notch, etc.)
+   ============================================================ */
+
+@supports (padding: max(0px)) {
+  .floating-nav__container {
+    padding-bottom: max(60px, calc(60px + env(safe-area-inset-bottom)));
+  }
+
+  .floating-nav__items {
+    padding-bottom: max(10px, calc(10px + env(safe-area-inset-bottom)));
+  }
+
+  .floating-nav__backdrop {
+    height: max(75px, calc(75px + env(safe-area-inset-bottom)));
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .navigation--mobile-floating,
+  .navigation--desktop {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Accessibility & Focus States
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .floating-nav__item--active::before {
+    background: radial-gradient(circle, rgba(67, 56, 202, 0.15) 0%, transparent 70%);
+  }
+
+  .floating-nav__curve path {
+    opacity: 0.9;
+  }
+}
+
+/* Ensure keyboard navigation is visible */
+.floating-nav__item:focus-visible,
+.floating-nav__fab:focus-visible {
+  outline-width: 3px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .floating-nav__item {
+    border: 1px solid transparent;
+  }
+
+  .floating-nav__item--active {
+    border: 1px solid #4338CA;
+  }
+
+  .floating-nav__fab {
+    border: 2px solid white;
+  }
+}

@@ -1,0 +1,331 @@
+/* ============================================================
+   LOGIN FORM COMPONENT STYLES
+   Form styling, validation, and interaction states
+   ============================================================ */
+
+@import '../../styles/design-tokens.css';
+
+.login-form-wrapper {
+  width: 100%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.success-message {
+  padding: 12px 16px;
+  background-color: var(--color-success-soft);
+  border: 1px solid var(--color-success);
+  border-radius: 8px;
+  color: var(--color-success);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideDown 150ms ease-out;
+}
+
+.success-message::before {
+  content: '✓';
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.forgot-password-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.forgot-password-link:hover {
+  color: var(--color-primary-hover);
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-decoration: underline;
+}
+
+.forgot-password-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.guest-link {
+  padding: 12px 24px;
+  background-color: transparent;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-family-body);
+  min-height: 44px;
+}
+
+.guest-link:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.guest-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.guest-link:active {
+  transform: scale(0.98);
+}
+
+.form-footer {
+  text-align: center;
+}
+
+.auth-link {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.auth-link .text-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0 4px;
+  border-radius: 2px;
+  transition: color var(--transition-fast);
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.auth-link .text-link:hover {
+  color: var(--color-primary-hover);
+}
+
+.auth-link .text-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.dont-have-account {
+  text-align: center;
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+}
+
+.signup-text-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  margin: 0 2px;
+  border-radius: 2px;
+  transition: opacity 150ms ease, text-decoration 150ms ease;
+  font-family: inherit;
+  font-size: inherit;
+  display: inline;
+}
+
+.signup-text-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  background: none !important;
+  background-color: transparent !important;
+}
+
+.signup-text-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  background: none !important;
+}
+
+.signup-text-link:active {
+  background: none !important;
+  color: var(--color-primary-hover) !important;
+}
+
+.signup-text-link:visited {
+  color: var(--color-primary) !important;
+}
+
+.security-text {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.lock-icon {
+  font-size: 14px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 479px) {
+  .login-form {
+    gap: 20px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+
+  .form-row-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .forgot-password-link {
+    width: 100%;
+    text-align: center;
+    padding: 8px 12px;
+  }
+
+  .form-divider {
+    margin: 4px 0;
+  }
+
+  .form-fields {
+    gap: 16px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) {
+  .login-page .login-form {
+    gap: 20px;
+  }
+
+  .login-page .form-title {
+    font-size: 28px;
+  }
+
+  .login-page .form-fields {
+    gap: 16px;
+  }
+}
+
+/* Modal-specific overrides to guarantee compact fit */
+.modal-content .login-form {
+  gap: 8px !important;
+}
+
+.modal-content .form-fields {
+  gap: 8px !important;
+}
+
+.modal-content .form-header {
+  margin-bottom: 4px !important;
+}
+
+.modal-content .form-input-wrapper {
+  gap: 3px !important;
+}
+
+.modal-content .form-label {
+  font-size: 12px !important;
+  margin-bottom: 2px !important;
+}
+
+/* Animation for success message */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .success-message {
+    animation: none;
+  }
+
+  .forgot-password-link,
+  .guest-link,
+  .signup-text-link {
+    transition: none;
+  }
+}

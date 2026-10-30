@@ -1,0 +1,586 @@
+/* ============================================================
+   MODAL COMPONENT STYLES - Minimalism Design
+   Clean, simple modal dialog with backdrop blur
+   ============================================================ */
+
+@import '../../styles/design-tokens.css';
+
+/* ============================================================
+   MODAL OVERLAY - Backdrop with blur effect
+   ============================================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-modal-backdrop);
+  animation: fadeIn 300ms ease-out forwards;
+}
+
+.modal-overlay.modal-closing {
+  animation: fadeOut 300ms ease-out forwards;
+}
+
+/* ============================================================
+   MODAL CONTAINER - Main modal window (minimal design)
+   ============================================================ */
+
+.modal-container {
+  background: #F8F7FC;
+  border-radius: 12px;
+  padding: 14px 18px 16px 18px;
+  max-width: 440px;
+  width: 92%;
+  max-height: min(90vh, 680px);
+  display: flex;
+  flex-direction: column;
+  z-index: var(--z-index-modal);
+  
+  /* Minimalist shadow - clean and crisp */
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.15);
+  border: none;
+  
+  animation: slideUp 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D decorative shape - top right */
+.modal-container::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 50%;
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3D decorative shape - bottom left */
+.modal-container::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.06) 0%, rgba(118, 75, 162, 0.04) 100%);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.modal-container.modal-closing {
+  animation: slideDown 300ms ease-out forwards;
+}
+
+/* ============================================================
+   MODAL HEADER - Title and close button
+   ============================================================ */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E5E5E5;
+  gap: 16px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   MODAL CLOSE BUTTON - Minimalist button
+   ============================================================ */
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border: none;
+  background: rgba(102, 126, 234, 0.25);
+  border-radius: 50%;
+  font-size: 20px;
+  color: #667EEA;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  
+  /* Minimalist shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  
+  transition: all 150ms ease;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 100;
+}
+
+.modal-close:hover {
+  background: rgba(102, 126, 234, 0.35);
+  color: #5A67D8;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.modal-close:active {
+  transform: scale(0.95);
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid #667EEA;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   MODAL CONTENT - Main content area
+   ============================================================ */
+
+.modal-content {
+  color: #333333;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.25) transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.25);
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.45);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Override form styling inside modal for minimal theme */
+.modal-content .form-input {
+  background: #FFFFFF !important;
+  border: 1px solid #D1D5DB !important;
+  border-radius: 6px !important;
+  padding: 7px 11px !important;
+  font-size: 13.5px !important;
+  min-height: 38px !important;
+  height: 38px !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+}
+
+.modal-content .form-input:focus {
+  border-color: #667EEA !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+  background: #FFFFFF !important;
+  outline: none !important;
+}
+
+.modal-content .btn {
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.25) !important;
+  margin-top: 4px !important;
+}
+
+.modal-content .btn:disabled {
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.modal-content .btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5A67D8 0%, #6C3F96 100%) !important;
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4) !important;
+  transform: translateY(-3px) !important;
+}
+
+.modal-content .btn:active:not(:disabled) {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.25) !important;
+}
+
+.modal-content .form-input::placeholder {
+  color: #9CA3AF !important;
+  opacity: 1 !important;
+}
+
+.modal-content .form-input:focus {
+  border-color: #667EEA !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+  background: #FFFFFF !important;
+  outline: none !important;
+}
+
+.modal-content .form-input--error {
+  background: #FEF2F2 !important;
+  border-color: #EF4444 !important;
+}
+
+.modal-content .form-input:disabled {
+  background: #F3F4F6 !important;
+  border-color: #E5E7EB !important;
+  color: #6B7280 !important;
+}
+
+.modal-content .form-label {
+  color: #1F2937 !important;
+  text-shadow: none !important;
+}
+
+.modal-content .form-error {
+  color: #DC2626;
+}
+
+.modal-content .form-help-text {
+  color: #666666;
+}
+
+/* Minimalist checkbox in modal */
+.modal-content .checkbox-custom {
+  background: #FFFFFF;
+  border: 1.5px solid #DDD;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: all 150ms ease;
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  flex-shrink: 0;
+}
+
+.modal-content .checkbox-input:checked ~ .checkbox-custom {
+  background: #667EEA;
+  border-color: #667EEA;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.15);
+}
+
+.modal-content .checkbox-input:checked ~ .checkbox-custom::after {
+  color: white;
+}
+
+.modal-content .checkbox-container:hover .checkbox-input:not(:disabled) ~ .checkbox-custom {
+  border-color: #667EEA;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(102, 126, 234, 0.1);
+}
+
+.modal-content .checkbox-label {
+  color: #333333;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.modal-content .checkbox-label a {
+  color: #667EEA !important;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: transparent !important;
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.modal-content .checkbox-label a:hover {
+  color: #5A67D8 !important;
+  text-decoration: underline !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.modal-content .checkbox-label a:active {
+  background-color: transparent !important;
+  color: #5A67D8 !important;
+}
+
+.modal-content .checkbox-label a:visited {
+  color: #667EEA !important;
+}
+
+.modal-content .checkbox-label a:focus {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.modal-content .checkbox-label a:focus-visible {
+  background-color: transparent !important;
+  outline: 2px solid #667EEA !important;
+  outline-offset: 2px !important;
+}
+
+.modal-content .checkbox-error {
+  color: #DC2626;
+}
+
+/* Success message */
+.modal-content .success-message {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #059669;
+  position: relative;
+  z-index: 1;
+}
+
+/* Strength bar */
+.modal-content .strength-bar {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 2px;
+}
+
+.modal-content .strength-text {
+  color: #333333;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   ANIMATIONS - Entrance and exit effects
+   ============================================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* ============================================================
+   SCROLLBAR STYLING - Hide scrollbar for modal
+   ============================================================ */
+
+.modal-container {
+  scrollbar-width: none; /* Firefox */
+}
+
+.modal-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Firefox scrollbar */
+.modal-container {
+  -ms-overflow-style: none; /* IE, Edge */
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN - Tablet
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .modal-container {
+    width: 95%;
+    max-width: 90%;
+    padding: 28px 24px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .modal-overlay {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .modal-header {
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 18px;
+  }
+
+  .modal-content {
+    max-height: calc(90vh - 120px);
+    overflow-y: auto;
+  }
+
+  .modal-content .form-input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN - Mobile
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .modal-container {
+    width: calc(100% - 24px);
+    max-width: none;
+    padding: 24px 20px;
+    border-radius: 6px;
+    max-height: 95vh;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .modal-overlay {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .modal-header {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    gap: 12px;
+  }
+
+  .modal-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .modal-close {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 16px;
+  }
+
+  .modal-content {
+    max-height: calc(95vh - 100px);
+    overflow-y: auto;
+  }
+
+  /* Adjust form inputs for mobile */
+  .modal-content .form-input {
+    font-size: 16px; /* Prevent iOS auto-zoom */
+    padding: 10px 12px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY - Prefers Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal-container {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .modal-close:hover {
+    transform: none;
+  }
+
+  .modal-close:active {
+    transform: none;
+  }
+
+  .modal-content .form-input {
+    transition: none;
+  }
+  
+  .modal-close {
+    transition: none;
+  }
+}

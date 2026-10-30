@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SchemeSathi – Government Schemes Made Simple</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== TOP NAVBAR ===== -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="brand-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="18" fill="#e8f5e9"/>
+          <path d="M10 22 Q14 10 18 14 Q22 8 26 20" stroke="#2e7d32" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M14 22 Q16 16 18 18 Q20 14 22 22" stroke="#66bb6a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="18" cy="23" rx="8" ry="3" fill="#a5d6a7" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">SchemeSathi</span>
+        <span class="brand-tagline">Government Schemes Made Simple</span>
+      </div>
+    </div>
+
+    <div class="navbar-search">
+      <i class="fa fa-search search-icon"></i>
+      <input type="text" placeholder="Search schemes by name, keyword or category..." />
+    </div>
+
+    <div class="navbar-right">
+      <div class="lang-selector">
+        <i class="fa fa-globe"></i>
+        <span>English</span>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="notif-btn">
+        <i class="fa fa-bell"></i>
+        <span class="notif-badge">3</span>
+      </div>
+      <div class="user-profile-btn">
+        <div class="user-avatar">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="user-info">
+          <span class="user-name">Rahul Sharma</span>
+          <span class="user-role">User</span>
+        </div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <div class="main-layout">
+
+    <!-- ===== LEFT SIDEBAR ===== -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <i class="fa fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa fa-user"></i>
+          <span>My Profile</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa fa-search"></i>
+          <span>Find Schemes</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa fa-bookmark"></i>
+          <span>Saved Schemes</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa fa-file-alt"></i>
+          <span>My Applications</span>
+        </a>
+        <a href="#" class="nav-item notif-nav">
+          <i class="fa fa-bell"></i>
+          <span>Notifications</span>
+          <span class="nav-badge">3</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa fa-question-circle"></i>
+          <span>Help &amp; Support</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ===== CENTER CONTENT ===== -->
+    <main class="content">
+
+      <!-- Hero / Welcome Banner -->
+      <section class="hero-banner">
+        <div class="hero-text">
+          <h2>Welcome back, Rahul! 👋</h2>
+          <p>Let's find the right government schemes for you.</p>
+          <div class="hero-quote">
+            <span>"Sahi Jaankari, Sahi Yojana, Behtar Kal."</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="herosection.png" alt="Hero Illustration" />
+        </div>
+      </section>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-icon blue-icon">
+            <i class="fa fa-file-alt"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-number">24</span>
+            <span class="stat-label">Potential Schemes</span>
+            <span class="stat-sub">Based on your profile</span>
+          </div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon green-icon">
+            <i class="fa fa-bookmark"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Saved Schemes</span>
+            <a href="#" class="stat-link green-link">View saved schemes →</a>
+          </div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon orange-icon">
+            <i class="fa fa-file-signature"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Applications</span>
+            <a href="#" class="stat-link orange-link">Track your applications →</a>
+          </div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon red-icon">
+            <i class="fa fa-bell"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-number red-num">3</span>
+            <span class="stat-label red-label">New Updates</span>
+            <a href="#" class="stat-link red-link">Latest announcements →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search / Filter Section -->
+      <section class="search-section">
+        <h3>Find Schemes for You</h3>
+        <div class="filter-grid">
+          <div class="filter-group">
+            <label>Category</label>
+            <div class="select-wrap">
+              <i class="fa fa-trophy select-prefix-icon"></i>
+              <select>
+                <option>Select category</option>
+                <option>Agriculture</option>
+                <option>Education</option>
+                <option>Housing</option>
+                <option>Health</option>
+              </select>
+              <i class="fa fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>State</label>
+            <div class="select-wrap">
+              <i class="fa fa-map-marker-alt select-prefix-icon"></i>
+              <select>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Gujarat</option>
+                <option>Uttar Pradesh</option>
+              </select>
+              <i class="fa fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Target Group</label>
+            <div class="select-wrap">
+              <i class="fa fa-pen select-prefix-icon"></i>
+              <select>
+                <option>Select</option>
+                <option>Farmer</option>
+                <option>Student</option>
+                <option>Women</option>
+              </select>
+              <i class="fa fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Gender</label>
+            <div class="select-wrap">
+              <i class="fa fa-user select-prefix-icon"></i>
+              <select>
+                <option>Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+              <i class="fa fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Area</label>
+            <div class="select-wrap">
+              <i class="fa fa-map-marker-alt select-prefix-icon"></i>
+              <select>
+                <option>Select</option>
+                <option>Rural</option>
+                <option>Urban</option>
+                <option>Semi-Urban</option>
+              </select>
+              <i class="fa fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+          <div class="filter-group keyword-group">
+            <label>Keyword (Optional)</label>
+            <div class="select-wrap keyword-wrap">
+              <i class="fa fa-search select-prefix-icon"></i>
+              <input type="text" placeholder="E.g. farmer, education, loan" />
+            </div>
+          </div>
+          <div class="search-btn-wrap">
+            <button class="search-schemes-btn">
+              <i class="fa fa-search"></i> Search Schemes
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schemes List -->
+      <section class="schemes-section">
+        <div class="schemes-header">
+          <div>
+            <h3>Potentially Relevant Schemes</h3>
+            <p class="schemes-sub">Based on your profile and preferences</p>
+          </div>
+          <a href="#" class="view-all-link">View All →</a>
+        </div>
+
+        <!-- Scheme Card 1 -->
+        <div class="scheme-card">
+          <div class="scheme-img">
+            <div class="scheme-img-placeholder agriculture-img">
+              <i class="fa fa-seedling"></i>
+            </div>
+          </div>
+          <div class="scheme-body">
+            <div class="scheme-tags">
+              <span class="tag central">Central Scheme</span>
+              <span class="tag agriculture">Agriculture</span>
+            </div>
+            <div class="scheme-title-row">
+              <h4>PM Kisan Samman Nidhi (PM-KISAN)</h4>
+              <div class="scheme-right-meta">
+                <span class="match-badge green-match">90% Match</span>
+                <button class="bookmark-btn"><i class="fa fa-bookmark"></i></button>
+              </div>
+            </div>
+            <p class="scheme-desc">Financial support of ₹6,000 per year to eligible farmer families in three equal installments.</p>
+            <div class="scheme-footer">
+              <div class="scheme-meta-tags">
+                <span class="meta-tag eligible"><i class="fa fa-check-circle"></i> Eligible</span>
+                <span class="meta-tag"><i class="fa fa-user"></i> Farmer</span>
+                <span class="meta-tag"><i class="fa fa-map-marker-alt"></i> Across India</span>
+              </div>
+              <button class="view-details-btn">View Details →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheme Card 2 -->
+        <div class="scheme-card">
+          <div class="scheme-img">
+            <div class="scheme-img-placeholder education-img">
+              <i class="fa fa-graduation-cap"></i>
+            </div>
+          </div>
+          <div class="scheme-body">
+            <div class="scheme-tags">
+              <span class="tag central">Central Scheme</span>
+              <span class="tag education">Education</span>
+            </div>
+            <div class="scheme-title-row">
+              <h4>Post Matric Scholarship for OBC Students</h4>
+              <div class="scheme-right-meta">
+                <span class="match-badge orange-match">85% Match</span>
+                <button class="bookmark-btn"><i class="fa fa-bookmark"></i></button>
+              </div>
+            </div>
+            <p class="scheme-desc">Financial assistance to OBC students for post-matriculation studies.</p>
+            <div class="scheme-footer">
+              <div class="scheme-meta-tags">
+                <span class="meta-tag eligible"><i class="fa fa-check-circle"></i> Eligible</span>
+                <span class="meta-tag"><i class="fa fa-user"></i> Student</span>
+                <span class="meta-tag"><i class="fa fa-map-marker-alt"></i> Maharashtra</span>
+              </div>
+              <button class="view-details-btn">View Details →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheme Card 3 -->
+        <div class="scheme-card">
+          <div class="scheme-img">
+            <div class="scheme-img-placeholder housing-img">
+              <i class="fa fa-home"></i>
+            </div>
+          </div>
+          <div class="scheme-body">
+            <div class="scheme-tags">
+              <span class="tag central">Central Scheme</span>
+              <span class="tag housing">Housing</span>
+            </div>
+            <div class="scheme-title-row">
+              <h4>Pradhan Mantri Awas Yojana (Gramin)</h4>
+              <div class="scheme-right-meta">
+                <span class="match-badge yellow-match">75% Match</span>
+                <button class="bookmark-btn"><i class="fa fa-bookmark"></i></button>
+              </div>
+            </div>
+            <p class="scheme-desc">Financial assistance for construction of pucca houses for rural households.</p>
+            <div class="scheme-footer">
+              <div class="scheme-meta-tags">
+                <span class="meta-tag potential"><i class="fa fa-check-circle"></i> Potentially Eligible</span>
+                <span class="meta-tag"><i class="fa fa-users"></i> Rural Household</span>
+                <span class="meta-tag"><i class="fa fa-map-marker-alt"></i> Maharashtra</span>
+              </div>
+              <button class="view-details-btn">View Details →</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- ===== RIGHT SIDEBAR ===== -->
+    <aside class="right-sidebar">
+
+      <!-- Profile Summary -->
+      <div class="profile-card">
+        <div class="profile-card-header">
+          <h4>My Profile Summary</h4>
+          <a href="#" class="edit-link"><i class="fa fa-pen"></i> Edit</a>
+        </div>
+        <ul class="profile-list">
+          <li>
+            <span class="pf-icon name-icon"><i class="fa fa-user"></i></span>
+            <span class="pf-key">Name</span>
+            <span class="pf-val">Rahul Sharma</span>
+          </li>
+          <li>
+            <span class="pf-icon age-icon"><i class="fa fa-calendar"></i></span>
+            <span class="pf-key">Age</span>
+            <span class="pf-val">28 Years</span>
+          </li>
+          <li>
+            <span class="pf-icon gender-icon"><i class="fa fa-venus-mars"></i></span>
+            <span class="pf-key">Gender</span>
+            <span class="pf-val">Male</span>
+          </li>
+          <li>
+            <span class="pf-icon state-icon"><i class="fa fa-map-marker-alt"></i></span>
+            <span class="pf-key">State</span>
+            <span class="pf-val">Maharashtra</span>
+          </li>
+          <li>
+            <span class="pf-icon cat-icon"><i class="fa fa-tag"></i></span>
+            <span class="pf-key">Category</span>
+            <span class="pf-val">OBC</span>
+          </li>
+          <li>
+            <span class="pf-icon occ-icon"><i class="fa fa-briefcase"></i></span>
+            <span class="pf-key">Occupation</span>
+            <span class="pf-val">Farmer</span>
+          </li>
+          <li>
+            <span class="pf-icon inc-icon"><i class="fa fa-rupee-sign"></i></span>
+            <span class="pf-key">Annual Income</span>
+            <span class="pf-val">₹2,50,000</span>
+          </li>
+          <li>
+            <span class="pf-icon area-icon"><i class="fa fa-map-marker-alt"></i></span>
+            <span class="pf-key">Area</span>
+            <span class="pf-val">Rural</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions-card">
+        <h4>Quick Actions</h4>
+        <ul class="qa-list">
+          <li>
+            <span class="qa-icon blue-qa"><i class="fa fa-search"></i></span>
+            <span>Find Schemes</span>
+          </li>
+          <li>
+            <span class="qa-icon green-qa"><i class="fa fa-bookmark"></i></span>
+            <span>View Saved Schemes</span>
+          </li>
+          <li>
+            <span class="qa-icon red-qa"><i class="fa fa-file-alt"></i></span>
+            <span>Track Applications</span>
+          </li>
+          <li>
+            <span class="qa-icon orange-qa"><i class="fa fa-bell"></i></span>
+            <span>Latest Updates</span>
+          </li>
+          <li>
+            <span class="qa-icon teal-qa"><i class="fa fa-question-circle"></i></span>
+            <span>Help &amp; Support</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Recent Notifications -->
+      <div class="recent-notif-card">
+        <div class="notif-card-header">
+          <h4>Recent Notifications</h4>
+          <a href="#" class="view-all-link">View All →</a>
+        </div>
+        <ul class="notif-list">
+          <li>
+            <span class="notif-icon blue-ni"><i class="fa fa-file-alt"></i></span>
+            <div class="notif-content">
+              <p>New scheme launched for farmers</p>
+              <span class="notif-date">12 Jan 2025</span>
+            </div>
+          </li>
+          <li>
+            <span class="notif-icon green-ni"><i class="fa fa-bookmark"></i></span>
+            <div class="notif-content">
+              <p>Last date extended for scholarship</p>
+              <span class="notif-date">10 Jan 2025</span>
+            </div>
+          </li>
+          <li>
+            <span class="notif-icon orange-ni"><i class="fa fa-home"></i></span>
+            <div class="notif-content">
+              <p>New update on PM Awas Yojana</p>
+              <span class="notif-date">08 Jan 2025</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+/* ============================================================
+   FORM CHECKBOX COMPONENT STYLES - CUSTOM DESIGN
+   Fully custom checkbox with visible checkmark
+   ============================================================ */
+
+@import '../../styles/design-tokens.css';
+
+.form-checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+}
+
+/* ============================================================
+   HIDDEN NATIVE CHECKBOX
+   ============================================================ */
+
+.checkbox-input-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   CUSTOM CHECKBOX BOX
+   ============================================================ */
+
+.checkbox-box {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid #667EEA;
+  border-radius: 4px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms ease;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.checkbox-box:hover {
+  border-color: #5A67D8;
+  background: #F8F7FC;
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.2);
+  transform: scale(1.05);
+}
+
+.checkbox-box.checked {
+  background: #667EEA;
+  border-color: #667EEA;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.checkbox-box.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   CHECKMARK ICON
+   ============================================================ */
+
+.checkmark-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  animation: checkmarkAppear 200ms ease-out;
+}
+
+@keyframes checkmarkAppear {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   CHECKBOX LABEL
+   ============================================================ */
+
+.checkbox-label {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.35;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  flex: 1;
+  vertical-align: middle;
+}
+
+.checkbox-label .policy-link {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #667EEA !important;
+  text-decoration: underline !important;
+  display: inline !important;
+  padding: 0 !important;
+}
+
+.checkbox-label .required-indicator {
+  color: #DC2626;
+  font-weight: 700;
+  margin-left: 2px;
+  display: inline;
+}
+
+.checkbox-label a {
+  color: #667EEA !important;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: transparent !important;
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: opacity 150ms ease;
+}
+
+.checkbox-label a:hover {
+  opacity: 0.7 !important;
+  text-decoration: underline !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: #667EEA !important;
+}
+
+.checkbox-label a:active {
+  background-color: transparent !important;
+  color: #5A67D8 !important;
+}
+
+.checkbox-label a:visited {
+  color: #667EEA !important;
+}
+
+.checkbox-label a:focus {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.checkbox-label a:focus-visible {
+  background-color: transparent !important;
+  outline: 2px solid #667EEA !important;
+  outline-offset: 2px !important;
+  border-radius: 2px;
+}
+
+.required-indicator {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+/* ============================================================
+   ERROR STATE
+   ============================================================ */
+
+.checkbox-error {
+  font-size: 12px;
+  color: #DC2626;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: slideDown 150ms ease-out;
+  margin-left: 32px;
+}
+
+.checkbox-error::before {
+  content: '×';
+  font-size: 16px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   MOBILE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .checkbox-label {
+    font-size: 12px;
+  }
+  
+  .checkbox-input {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkbox-error {
+    animation: none;
+  }
+
+  .checkbox-label a {
+    transition: none;
+  }
+}

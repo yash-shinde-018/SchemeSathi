@@ -1,0 +1,243 @@
+/**
+ * Trust Strip Section Styles - Premium Modern Design
+ * Perfect alignment, consistent spacing, subtle shadow effects
+ */
+
+.trust-strip {
+  padding: 3rem 0;
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background accent */
+.trust-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(67, 56, 202, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .trust-strip {
+    padding: 3.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .trust-strip {
+    padding: 4rem 0;
+  }
+}
+
+/* ============================================================
+   Items Grid - Perfect Alignment with CSS Grid
+   ============================================================ */
+
+.trust-strip__items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Mobile: 1 column */
+@media (min-width: 480px) {
+  .trust-strip__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet and Desktop: 4 equal columns */
+@media (min-width: 768px) {
+  .trust-strip__items {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .trust-strip__items {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-strip__items {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Individual Item - Premium Card Design
+   ============================================================ */
+
+.trust-strip__item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: default;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.trust-strip__item:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(67, 56, 202, 0.3);
+  box-shadow: 0 8px 20px rgba(67, 56, 202, 0.12);
+  transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-strip__item:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Icon Wrapper - Consistent Size, Centered
+   ============================================================ */
+
+.trust-strip__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-primary-soft) 0%, rgba(238, 242, 255, 0.5) 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(67, 56, 202, 0.08);
+}
+
+.trust-strip__item:hover .trust-strip__icon-wrapper {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-soft) 100%);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(67, 56, 202, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-strip__item:hover .trust-strip__icon-wrapper {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Content - Proper Typography Hierarchy
+   ============================================================ */
+
+.trust-strip__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.trust-strip__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.trust-strip__description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ============================================================
+   Mobile Responsive - Proper Spacing
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .trust-strip {
+    padding: 2rem 0;
+  }
+
+  .trust-strip__items {
+    gap: 1rem;
+  }
+
+  .trust-strip__item {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .trust-strip__icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .trust-strip__title {
+    font-size: 0.9375rem;
+  }
+
+  .trust-strip__description {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .trust-strip {
+    background: transparent;
+    border-color: var(--color-border);
+    page-break-inside: avoid;
+  }
+
+  .trust-strip::before {
+    display: none;
+  }
+
+  .trust-strip__item {
+    page-break-inside: avoid;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .trust-strip__icon-wrapper {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    box-shadow: none;
+  }
+}

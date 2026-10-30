@@ -1,0 +1,188 @@
+/**
+ * Categories Section Styles - Premium Minimal Redesign
+ * Modern category cards with depth and hover effects
+ */
+
+.categories {
+  padding: var(--section-padding-y-mobile) 0;
+  background: transparent;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .categories {
+    padding: var(--section-padding-y-tablet) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .categories {
+    padding: var(--section-padding-y-desktop) 0;
+  }
+}
+
+/* ============================================================
+   Section Heading
+   ============================================================ */
+
+.categories__heading {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 var(--spacing-lg) 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.3px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .categories__heading {
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .categories__heading {
+    margin-bottom: var(--spacing-3xl);
+  }
+}
+
+/* ============================================================
+   Categories Grid
+   ============================================================ */
+
+.categories__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+/* Mobile-md breakpoint: 2 columns */
+@media (min-width: 480px) {
+  .categories__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* Tablet breakpoint: 3 columns */
+@media (min-width: 768px) {
+  .categories__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Desktop breakpoint: 5 columns */
+@media (min-width: 1024px) {
+  .categories__grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* ============================================================
+   Category Card
+   ============================================================ */
+
+.categories__card {
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.categories__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-normal);
+}
+
+.categories__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(67, 56, 202, 0.1);
+}
+
+.categories__card:hover::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .categories__card:hover {
+    transform: none;
+  }
+  
+  .categories__card::before {
+    display: none;
+  }
+}
+
+.categories__card:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Mobile Responsive
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .categories {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .categories__heading {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .categories__grid {
+    gap: var(--spacing-md);
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .categories {
+    background-color: transparent;
+  }
+
+  .categories__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .categories__card {
+    page-break-inside: avoid;
+  }
+}

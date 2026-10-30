@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Test</title>
+    <style>
+        body { font-family: Arial; padding: 40px; max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #007bff; color: white; padding: 12px 24px; font-size: 16px; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .log { background: #f8f9fa; padding: 10px; margin-top: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>SchemeSathi Registration Test</h1>
+    <p>Testing direct API calls without React</p>
+    
+    <form id="registerForm">
+        <div class="form-group">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" value="Direct Test User" required>
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="email" value="directtest@example.com" required>
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="tel" id="phone" value="7777777777" required>
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="password" value="Direct@123" required>
+        </div>
+        <button type="submit">Test Registration</button>
+    </form>
+    
+    <div id="result"></div>
+    <div id="log" class="log"></div>
+    
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        const resultDiv = document.getElementById('result');
+        const logDiv = document.getElementById('log');
+        
+        function log(message) {
+            logDiv.textContent += message + '\n';
+            console.log(message);
+        }
+        
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            resultDiv.innerHTML = '';
+            logDiv.textContent = '';
+            log('=== Starting Registration Test ===');
+            
+            const fullName = document.getElementById('fullName').value;
+            const [firstName, ...lastNameParts] = fullName.split(' ');
+            const lastName = lastNameParts.join(' ') || '';
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            
+            const registerData = {
+                email,
+                password,
+                first_name: firstName,
+                last_name: lastName,
+                phone
+            };
+            
+            log('Step 1: Calling registration API...');
+            log('POST ' + API_URL + '/auth/register');
+            log('Data: ' + JSON.stringify(registerData, null, 2));
+            
+            try {
+                // Step 1: Register
+                const registerResponse = await fetch(API_URL + '/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(registerData),
+                    credentials: 'include'
+                });
+                
+                log('Registration response status: ' + registerResponse.status);
+                const registerResult = await registerResponse.json();
+                log('Registration result: ' + JSON.stringify(registerResult, null, 2));
+                
+                if (!registerResult.success) {
+                    throw new Error(registerResult.message || 'Registration failed');
+                }
+                
+                log('\nStep 2: Auto-login after registration...');
+                log('POST ' + API_URL + '/auth/login');
+                
+                // Step 2: Login
+                const loginResponse = await fetch(API_URL + '/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password }),
+                    credentials: 'include'
+                });
+                
+                log('Login response status: ' + loginResponse.status);
+                const loginResult = await loginResponse.json();
+                log('Login result: ' + JSON.stringify(loginResult, null, 2));
+                
+                if (!loginResult.success) {
+                    throw new Error(loginResult.message || 'Login failed');
+                }
+                
+                log('\nStep 3: Verifying authentication...');
+                log('GET ' + API_URL + '/auth/me');
+                
+                // Step 3: Check auth status
+                const authResponse = await fetch(API_URL + '/auth/me', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                log('Auth check response status: ' + authResponse.status);
+                const authResult = await authResponse.json();
+                log('Auth result: ' + JSON.stringify(authResult, null, 2));
+                
+                if (authResult.success) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✓ SUCCESS!</h3>
+                            <p><strong>Registration completed successfully</strong></p>
+                            <p>User ID: ${registerResult.user_id}</p>
+                            <p>Email: ${authResult.user.email}</p>
+                            <p>Name: ${authResult.user.first_name} ${authResult.user.last_name}</p>
+                            <p>Role: ${authResult.user.role}</p>
+                            <p><strong>In the React app, user should now be redirected to /dashboard</strong></p>
+                        </div>
+                    `;
+                    log('\n=== ✓ ALL TESTS PASSED ===');
+                } else {
+                    throw new Error('Auth check failed');
+                }
+                
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>✗ ERROR</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+                log('\n=== ✗ TEST FAILED ===');
+                log('Error: ' + error.message);
+            }
+        });
+        
+        log('Page loaded. Ready to test registration.');
+        log('Backend API: ' + API_URL);
+    </script>
+</body>
+</html>

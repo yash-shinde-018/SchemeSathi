@@ -1,0 +1,235 @@
+/**
+ * CTA Section Styles - Minimal Premium Closing
+ * Strong call-to-action with subtle ambient effects
+ */
+
+.cta {
+  padding: var(--section-padding-y-mobile) 0;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(40px, -40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta::before,
+  .cta::after {
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .cta {
+    padding: var(--section-padding-y-tablet) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta {
+    padding: var(--section-padding-y-desktop) 0;
+  }
+}
+
+/* ============================================================
+   Content Container
+   ============================================================ */
+
+.cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta__content {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Heading
+   ============================================================ */
+
+.cta__heading {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+/* ============================================================
+   Supporting Text
+   ============================================================ */
+
+.cta__text {
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 550px;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.cta__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  align-items: center;
+}
+
+@media (min-width: 480px) {
+  .cta__buttons {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* ============================================================
+   Primary CTA Button - Premium Enhanced Styling
+   ============================================================ */
+
+.cta__button-primary {
+  min-width: 240px;
+  padding: 16px 32px !important;
+  font-weight: 700 !important;
+  font-size: 1.0625rem !important;
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%) !important;
+  border: 2px solid transparent !important;
+  color: white !important;
+  border-radius: 12px !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3) !important;
+  cursor: pointer;
+}
+
+/* Shimmer overlay effect */
+.cta__button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.35s ease;
+  pointer-events: none;
+}
+
+.cta__button-primary:hover {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%) !important;
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.4) !important;
+  transform: translateY(-4px) scale(1.05);
+}
+
+.cta__button-primary:hover::before {
+  left: 100%;
+}
+
+.cta__button-primary:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3) !important;
+}
+
+@media (max-width: 479px) {
+  .cta__button-primary {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta__button-primary {
+    transition: none;
+  }
+
+  .cta__button-primary:hover {
+    transform: none;
+  }
+
+  .cta__button-primary::before {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Mobile Responsive
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .cta {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .cta__content {
+    gap: var(--spacing-md);
+  }
+
+  .cta__heading {
+    font-size: 1.5rem;
+  }
+
+  .cta__text {
+    font-size: var(--font-size-body-sm);
+  }
+
+  .cta__buttons {
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .cta {
+    background: transparent;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cta::before {
+    display: none;
+  }
+
+  .cta__buttons {
+    display: none;
+  }
+}

@@ -1,0 +1,735 @@
+/* ============================================================
+   SCHEMESATHI ANIMATIONS & TRANSITIONS
+   Smooth, performant animations with prefers-reduced-motion support
+   ============================================================ */
+
+@import './design-tokens.css';
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ============================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================ */
+
+.animate-fade-in {
+  animation: fadeIn var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideLeft var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideRight var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-scale-out {
+  animation: scaleOut var(--animation-duration-normal) ease-out forwards;
+}
+
+.animate-bounce {
+  animation: bounce var(--animation-duration-normal) infinite;
+}
+
+.animate-pulse {
+  animation: pulse var(--animation-duration-normal) infinite;
+}
+
+.animate-spin {
+  animation: spin var(--animation-duration-slow) linear infinite;
+}
+
+.animate-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0) 40%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================================
+   TRANSITION UTILITIES
+   ============================================================ */
+
+.transition-all {
+  transition: all var(--transition-normal);
+}
+
+.transition-colors {
+  transition: background-color var(--transition-fast), 
+              color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.transition-opacity {
+  transition: opacity var(--transition-fast);
+}
+
+.transition-transform {
+  transition: transform var(--transition-fast);
+}
+
+.transition-shadow {
+  transition: box-shadow var(--transition-fast);
+}
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-normal {
+  transition: all var(--transition-normal);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* ============================================================
+   BUTTON INTERACTIONS
+   ============================================================ */
+
+button,
+.btn,
+[role="button"] {
+  transition: all var(--transition-fast);
+}
+
+button:hover:not(:disabled):not(.modal-close):not(.login-link-button):not(.guest-link):not(.login-text-link):not(.explore-categories__card),
+.btn:hover:not(:disabled),
+[role="button"]:hover:not(:disabled) {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+button:active:not(:disabled),
+.btn:active:not(:disabled),
+[role="button"]:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+  transition: all 75ms ease-in-out;
+}
+
+button:focus-visible,
+.btn:focus-visible,
+[role="button"]:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* ============================================================
+   CARD INTERACTIONS
+   ============================================================ */
+
+.card {
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card:active {
+  transform: translateY(-2px);
+  transition: all 75ms ease-in-out;
+}
+
+/* ============================================================
+   LINK INTERACTIONS
+   ============================================================ */
+
+/* ============================================================
+   LINK INTERACTIONS - Exclude modal links from dark hover
+   ============================================================ */
+
+a {
+  transition: color var(--transition-fast), 
+              background-color var(--transition-fast),
+              text-decoration var(--transition-fast);
+}
+
+a:not(.modal-content a):not(.policy-link) {
+  transition: color var(--transition-fast), 
+              background-color var(--transition-fast),
+              text-decoration var(--transition-fast);
+}
+
+a:not(.modal-content a):not(.policy-link):hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+a:not(.modal-content a):not(.policy-link):active {
+  color: var(--color-primary-dark);
+  transform: scale(0.98);
+}
+
+a:active {
+  color: var(--color-primary-dark);
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   FORM INPUT INTERACTIONS
+   ============================================================ */
+
+input,
+textarea,
+select {
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background-color var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary-main);
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   ICON INTERACTIONS
+   ============================================================ */
+
+.icon,
+[class*="icon-"] {
+  transition: transform var(--transition-fast), 
+              color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover:not(:disabled):not(.modal-close) .icon,
+.btn:hover:not(:disabled) .icon,
+[role="button"]:hover:not(:disabled) .icon {
+  transform: scale(1.1);
+}
+
+button:active:not(:disabled) .icon,
+.btn:active:not(:disabled) .icon,
+[role="button"]:active:not(:disabled) .icon {
+  transform: scale(0.95);
+}
+
+/* ============================================================
+   SECTION FADE-IN ON LOAD
+   ============================================================ */
+
+.section {
+  animation: fadeIn 600ms ease-out;
+}
+
+.section-enter-up {
+  animation: slideUp 600ms ease-out;
+}
+
+.section-enter-fade {
+  animation: fadeIn 800ms ease-out;
+}
+
+/* ============================================================
+   DROPDOWN & MENU INTERACTIONS
+   ============================================================ */
+
+.dropdown-menu {
+  animation: slideDown var(--animation-duration-fast) ease-out;
+  transform-origin: top center;
+  max-height: 500px;
+  overflow-y: auto;
+  transition: all var(--transition-normal);
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  animation: slideDown var(--animation-duration-fast) ease-out;
+}
+
+.dropdown-menu.hide {
+  opacity: 0;
+  visibility: hidden;
+  animation: slideUp var(--animation-duration-fast) ease-out;
+}
+
+.dropdown-menu-item {
+  transition: background-color var(--transition-fast),
+              padding-left var(--transition-fast);
+}
+
+.dropdown-menu-item:hover {
+  background-color: var(--color-gray-100);
+  padding-left: 8px;
+}
+
+/* ============================================================
+   MOBILE MENU ANIMATIONS
+   ============================================================ */
+
+.mobile-menu {
+  animation: slideLeft var(--animation-duration-normal) ease-out;
+}
+
+.mobile-menu.closing {
+  animation: slideRight var(--animation-duration-normal) ease-in;
+}
+
+.mobile-menu-overlay {
+  animation: fadeIn var(--animation-duration-fast) ease-out;
+}
+
+/* ============================================================
+   MODAL & DIALOG ANIMATIONS
+   ============================================================ */
+
+.modal {
+  animation: scaleIn var(--animation-duration-normal) ease-out;
+}
+
+.modal-backdrop {
+  animation: fadeIn var(--animation-duration-fast) ease-out;
+}
+
+.modal.closing {
+  animation: scaleOut var(--animation-duration-normal) ease-in;
+}
+
+/* ============================================================
+   TOAST & NOTIFICATION ANIMATIONS
+   ============================================================ */
+
+.toast {
+  animation: slideUp var(--animation-duration-normal) ease-out;
+}
+
+.toast.removing {
+  animation: slideDown var(--animation-duration-normal) ease-in;
+}
+
+.notification-enter {
+  animation: slideRight var(--animation-duration-fast) ease-out;
+}
+
+/* ============================================================
+   LOADING STATE ANIMATIONS
+   ============================================================ */
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.spinner-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton {
+  background-image: linear-gradient(
+    90deg,
+    rgba(200, 200, 200, 0.2) 0%,
+    rgba(200, 200, 200, 0.4) 20%,
+    rgba(200, 200, 200, 0.2) 40%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================================
+   EASING FUNCTIONS
+   ============================================================ */
+
+.ease-in {
+  transition-timing-function: ease-in;
+}
+
+.ease-out {
+  transition-timing-function: ease-out;
+}
+
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+.ease-linear {
+  transition-timing-function: linear;
+}
+
+.cubic-bezier-ease-in {
+  transition-timing-function: var(--easing-ease-in);
+}
+
+.cubic-bezier-ease-out {
+  transition-timing-function: var(--easing-ease-out);
+}
+
+.cubic-bezier-ease-in-out {
+  transition-timing-function: var(--easing-ease-in-out);
+}
+
+/* ============================================================
+   ANIMATION DELAY UTILITIES
+   ============================================================ */
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* ============================================================
+   TRANSFORM UTILITIES
+   ============================================================ */
+
+.scale-90 {
+  transform: scale(0.9);
+  transition: transform var(--transition-fast);
+}
+
+.scale-100 {
+  transform: scale(1);
+  transition: transform var(--transition-fast);
+}
+
+.scale-105 {
+  transform: scale(1.05);
+  transition: transform var(--transition-fast);
+}
+
+.scale-110 {
+  transform: scale(1.1);
+  transition: transform var(--transition-fast);
+}
+
+.translate-y-1 {
+  transform: translateY(4px);
+  transition: transform var(--transition-fast);
+}
+
+.translate-y-minus-1 {
+  transform: translateY(-4px);
+  transition: transform var(--transition-fast);
+}
+
+.translate-y-minus-2 {
+  transform: translateY(-8px);
+  transition: transform var(--transition-fast);
+}
+
+/* ============================================================
+   SMOOTH SCROLL BEHAVIOR
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   PERFORMANCE OPTIMIZATION
+   Hardware acceleration for animations
+   ============================================================ */
+
+.will-animate {
+  will-change: transform, opacity;
+}
+
+.will-animate-transform {
+  will-change: transform;
+}
+
+.will-animate-opacity {
+  will-change: opacity;
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION SUPPORT
+   Disable animations for users with motion preferences
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in,
+  .animate-fade-out,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-scale-in,
+  .animate-scale-out,
+  .animate-bounce,
+  .animate-pulse,
+  .animate-spin,
+  .animate-shimmer,
+  .section,
+  .section-enter-up,
+  .section-enter-fade,
+  .dropdown-menu,
+  .mobile-menu,
+  .modal,
+  .toast,
+  .notification-enter,
+  .spinner,
+  .spinner-pulse,
+  .skeleton {
+    animation: none !important;
+  }
+
+  button:hover:not(:disabled):not(.modal-close),
+  .btn:hover:not(:disabled),
+  [role="button"]:hover:not(:disabled),
+  .card:hover,
+  a:hover {
+    transform: none !important;
+  }
+
+  /* Maintain visual feedback without motion */
+  button:hover:not(:disabled):not(.modal-close),
+  .btn:hover:not(:disabled),
+  [role="button"]:hover:not(:disabled) {
+    box-shadow: var(--shadow-md);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .transition-all,
+  .transition-colors,
+  .transition-opacity,
+  .transition-transform,
+  .transition-shadow,
+  .transition-fast,
+  .transition-normal,
+  .transition-slow {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   FALLBACK FOR OLDER BROWSERS
+   Basic support without animation
+   ============================================================ */
+
+@supports not (animation: fadeIn 400ms ease-out) {
+  .animate-fade-in,
+  .animate-fade-out,
+  .animate-slide-up,
+  .animate-slide-down {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE ANIMATION DURATIONS
+   Adjust animation speeds for mobile if desired
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Slightly faster animations on mobile for perceived performance */
+  .animate-fade-in,
+  .animate-fade-out,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-scale-in,
+  .animate-scale-out {
+    animation-duration: calc(var(--animation-duration-normal) * 0.8);
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY: HIGH CONTRAST ANIMATIONS
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  button:hover:not(:disabled):not(.modal-close),
+  .btn:hover:not(:disabled),
+  [role="button"]:hover:not(:disabled) {
+    box-shadow: 0 0 0 3px var(--color-primary-main);
+  }
+
+  a:focus-visible {
+    outline-width: 4px;
+  }
+}

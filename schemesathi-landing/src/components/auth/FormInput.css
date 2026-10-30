@@ -1,0 +1,201 @@
+/* ============================================================
+   FORM INPUT COMPONENT STYLES - CLEAN AND FUNCTIONAL
+   ============================================================ */
+
+@import '../../styles/design-tokens.css';
+
+.form-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  letter-spacing: 0.2px;
+}
+
+.required-indicator {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+.form-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 7px 11px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  background: #FFFFFF;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #111827;
+  transition: all 150ms ease;
+  min-height: 38px;
+  height: 38px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: #9CA3AF;
+  opacity: 1;
+}
+
+.form-input:hover {
+  border-color: #9CA3AF;
+}
+
+.form-input:focus {
+  border-color: #667EEA;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: #FFFFFF;
+}
+
+.form-input:disabled {
+  background: #F3F4F6;
+  color: #6B7280;
+  cursor: not-allowed;
+  border-color: #E5E7EB;
+}
+
+.form-input--error {
+  border-color: #EF4444;
+  background: #FEF2F2;
+}
+
+.form-input--error:focus {
+  border-color: #DC2626;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ============================================================
+   PASSWORD TOGGLE BUTTON
+   ============================================================ */
+
+.password-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: opacity 200ms ease;
+  color: #6B7280;
+  z-index: 10;
+  line-height: 1;
+}
+
+.password-toggle:hover {
+  opacity: 0.7;
+  color: #667EEA;
+  background: transparent;
+}
+
+.password-toggle:focus {
+  outline: 2px solid #667EEA;
+  outline-offset: 2px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.password-toggle:active {
+  background: transparent;
+}
+
+.toggle-icon {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ============================================================
+   ERROR MESSAGE
+   ============================================================ */
+
+.form-error {
+  font-size: 12px;
+  color: #DC2626;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1.4;
+}
+
+.form-error::before {
+  content: '⚠';
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* ============================================================
+   HELP TEXT
+   ============================================================ */
+
+.form-help-text {
+  font-size: 12px;
+  color: #6B7280;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   MOBILE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .form-input {
+    font-size: 16px;
+    padding: 11px 12px;
+    min-height: 44px;
+  }
+
+  .form-label {
+    font-size: 13px;
+  }
+
+  .form-error {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
+   TABLET ADJUSTMENTS
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .form-input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-input,
+  .password-toggle {
+    transition: none;
+  }
+}

@@ -1,0 +1,247 @@
+/* ===================================================
+   NOTIFICATIONS PAGE STYLES
+   Theme: Neumorphism & Soft Organic UI
+   Tactile alert feeds, pebble filter chips & clay cards
+   =================================================== */
+
+.notif-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header Box - Neumorphic Tray */
+.notif-header-box {
+  background: #edf3ee;
+  border-radius: 24px;
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 7px 7px 18px rgba(155, 175, 160, 0.4), -7px -7px 18px #ffffff;
+}
+
+.notif-header-left h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1b4332;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.4px;
+}
+
+.notif-header-left h2 i {
+  color: #2d6a4f;
+}
+
+.notif-header-left p {
+  font-size: 14px;
+  color: #52685a;
+}
+
+.notif-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-notif-action {
+  background: #edf3ee;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  color: #314a3a;
+  padding: 9px 18px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.35), -3px -3px 8px #ffffff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-notif-action:hover {
+  box-shadow: 5px 5px 12px rgba(145, 168, 150, 0.45), -5px -5px 12px #ffffff;
+  color: #1b4332;
+  transform: translateY(-1px);
+}
+
+/* Category Filters Bar - Neumorphic Pebbles */
+.notif-filter-bar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 2px 2px 8px;
+}
+
+.notif-filter-chip {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #edf3ee;
+  color: #385042;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.35), -3px -3px 8px #ffffff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.notif-filter-chip:hover {
+  color: #0f766e;
+  box-shadow: 5px 5px 12px rgba(13, 148, 136, 0.2), -5px -5px 12px #ffffff;
+  transform: translateY(-1px);
+}
+
+.notif-filter-chip.active {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  box-shadow: 4px 4px 12px rgba(13, 148, 136, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(0);
+}
+
+.chip-counter {
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.notif-filter-chip.active .chip-counter {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Notification Items List */
+.notif-items-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notif-card-item {
+  background: #edf3ee;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  box-shadow: 6px 6px 16px rgba(155, 175, 160, 0.4), -6px -6px 16px #ffffff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.notif-card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 20px rgba(145, 168, 150, 0.48), -8px -8px 20px #ffffff;
+}
+
+.notif-card-item.unread {
+  border-left: 5px solid #2d6a4f;
+  background: #edf5ef;
+}
+
+.notif-type-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 3px 3px 8px rgba(155, 175, 160, 0.3), -3px -3px 8px #ffffff;
+}
+
+.notif-type-icon.scheme { background: #e3f0f5; color: #1f6f87; }
+.notif-type-icon.deadline { background: #fbf2df; color: #8c5b16; }
+.notif-type-icon.application { background: #e1efe3; color: #1b4332; }
+.notif-type-icon.alert { background: #f9e8e5; color: #bd3b29; }
+.notif-type-icon.welcome { background: #e0f2fe; color: #0284c7; }
+.notif-type-icon.support { background: #fef3c7; color: #b45309; }
+.notif-type-icon.system { background: #ede9fe; color: #7c3aed; }
+
+.notif-body-content {
+  flex: 1;
+}
+
+.notif-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.notif-item-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #1b2d22;
+}
+
+.notif-time-ago {
+  font-size: 12px;
+  color: #72877a;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.notif-item-desc {
+  font-size: 13.5px;
+  color: #4a5e52;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.notif-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-notif-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2d6a4f;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.btn-notif-link:hover {
+  transform: translateX(3px);
+  color: #1b4332;
+}
+
+.btn-mark-single-read {
+  font-size: 12px;
+  color: #72877a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.btn-mark-single-read:hover {
+  color: #1b2d22;
+}

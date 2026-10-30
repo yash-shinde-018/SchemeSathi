@@ -1,0 +1,276 @@
+/**
+ * Footer Component Styles - Premium Unified Design
+ * Elegant, perfectly aligned 3-column footer matching SchemeSathi aesthetic
+ */
+
+.footer {
+  background: linear-gradient(180deg, 
+    rgba(245, 240, 255, 0.7) 0%,
+    rgba(255, 240, 245, 0.6) 30%,
+    rgba(240, 255, 244, 0.6) 60%,
+    rgba(245, 240, 255, 0.7) 100%);
+  color: #172033;
+  margin-top: 0;
+  border-top: 2px solid rgba(99, 102, 241, 0.15);
+  position: relative;
+  overflow: hidden;
+  text-align: left; /* Overrides #root text-align: center */
+}
+
+/* Decorative subtle ambient gradient overlay */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(67, 56, 202, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(13, 148, 136, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer__content {
+  padding: 56px 0 32px 0;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+
+/* ============================================================
+   Footer Container - Adds Generous Inset From Window Border
+   ============================================================ */
+
+.footer__container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(32px, 6vw, 72px);
+  padding-right: clamp(32px, 6vw, 72px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   Footer Grid Layout - 3 Perfectly Aligned Columns
+   ============================================================ */
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  width: 100%;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 640px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* Desktop: 3 balanced columns aligned at the top */
+@media (min-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: 1.1fr 1.6fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+}
+
+/* ============================================================
+   Footer Section - Strict Left Alignment
+   ============================================================ */
+
+.footer__section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.footer__section-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.footer__nav {
+  width: 100%;
+  text-align: left;
+}
+
+/* ============================================================
+   Links List - Clean Vertical Stack
+   ============================================================ */
+
+.footer__links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.footer__links-list li {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer__link,
+a.footer__link,
+a.footer__link:link,
+a.footer__link:visited {
+  color: #475569 !important;
+  text-decoration: none !important;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  width: fit-content;
+  position: relative;
+}
+
+.footer__link:hover,
+a.footer__link:hover {
+  color: #4338ca !important;
+  transform: translateX(4px);
+  text-decoration: none !important;
+}
+
+.footer__link:focus-visible {
+  outline: 2px solid #4338ca;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   About Section
+   ============================================================ */
+
+.footer__about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.footer__logo-icon {
+  color: #4338ca;
+  font-size: 22px;
+}
+
+.footer__logo-text {
+  font-weight: 800;
+  font-size: 20px;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.footer__description {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0;
+  text-align: left;
+  max-width: 360px;
+}
+
+/* ============================================================
+   Divider
+   ============================================================ */
+
+.footer__divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+  margin: 36px 0 24px 0;
+  width: 100%;
+}
+
+/* ============================================================
+   Copyright & Disclaimer Section - Clean Centered Closing
+   ============================================================ */
+
+.footer__copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.footer__copyright-text {
+  font-size: 13.5px;
+  color: #64748b;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.footer__disclaimer {
+  font-size: 12.5px;
+  color: #94a3b8;
+  margin: 0 auto;
+  line-height: 1.6;
+  max-width: 780px;
+  text-align: center;
+}
+
+/* ============================================================
+   Mobile Responsive Adjustments
+   ============================================================ */
+
+@media (max-width: 639px) {
+  .footer__content {
+    padding: 40px 0 24px 0;
+  }
+
+  .footer__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .footer__grid {
+    gap: 28px;
+  }
+
+  .footer__divider {
+    margin: 28px 0 20px 0;
+  }
+
+  .footer__description {
+    max-width: 100%;
+  }
+}

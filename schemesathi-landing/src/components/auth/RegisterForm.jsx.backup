@@ -1,0 +1,328 @@
+﻿import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import FormInput from './FormInput';
+import FormCheckbox from './FormCheckbox';
+import Button from '../common/Button';
+import './RegisterForm.css';
+
+/**
+ * RegisterForm Component - User registration form with validation
+ */
+export default function RegisterForm({ onNavigate, onSubmit }) {
+  console.log('[RegisterForm] Component loaded/rendered', { hasOnSubmit: !!onSubmit, hasOnNavigate: !!onNavigate });
+  const navigate = useNavigate();
+  const { register, isLoading, error: contextError } = useAuth();
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirmPassword: '',
+    agreeToTerms: false,
+  });
+
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
+  const [apiError, setApiError] = useState('');
+
+  const getPasswordStrength = (password) => {
+    if (!password) return null;
+    if (password.length < 8) return 'weak';
+    if (password.length < 12) return 'medium';
+    return 'strong';
+  };
+
+  const passwordStrength = getPasswordStrength(formData.password);
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Full name is required';
+    } else if (formData.fullName.trim().length < 2) {
+      newErrors.fullName = 'Name must be at least 2 characters';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = 'Enter a valid email address';
+      }
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else {
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(formData.phone)) {
+        newErrors.phone = 'Enter a valid 10-digit phone number';
+      }
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = 'Confirm password is required';
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (!formData.agreeToTerms) {
+      newErrors.agreeToTerms = 'You must agree to the Terms & Conditions';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: '',
+      }));
+    }
+    if (apiError) {
+      setApiError('');
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log('[RegisterForm] Form submitted');
+
+    if (!validateForm()) {
+      console.log('[RegisterForm] Form validation failed');
+      return;
+    }
+
+    setApiError('');
+
+    const nameParts = formData.fullName.trim().split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    console.log('[RegisterForm] Calling register with:', {
+      email: formData.email,
+      firstName,
+      lastName,
+      phone: formData.phone,
+    });
+
+    try {
+      const result = await register(
+        formData.email,
+        formData.password,
+        firstName,
+        lastName,
+        formData.phone
+      );
+
+      console.log('[RegisterForm] Register result:', result);
+
+      if (result && result.success) {
+        console.log('[RegisterForm] Registration successful');
+        setSuccessMessage('Account created successfully! Redirecting to dashboard...');
+        
+        // Clear form
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          password: '',
+          confirmPassword: '',
+          agreeToTerms: false,
+        });
+
+        // Call onSubmit callback if provided (closes modal)
+        if (onSubmit) {
+          console.log('[RegisterForm] Calling onSubmit callback');
+          onSubmit();
+        }
+
+        // Navigate to dashboard
+        setTimeout(() => {
+          console.log('[RegisterForm] Navigating to /dashboard');
+          navigate('/dashboard');
+        }, 500);
+      } else {
+        const errorMsg = result?.message || 'Registration failed. Please try again.';
+        console.error('[RegisterForm] Registration failed:', errorMsg);
+        setApiError(errorMsg);
+      }
+    } catch (error) {
+      console.error('[RegisterForm] Registration error:', error);
+      setApiError(error.message || 'An error occurred during registration. Please try again.');
+    }
+  };
+
+  return (
+    <div className="register-form-wrapper">
+      <form onSubmit={handleFormSubmit} className="register-form" noValidate>
+        {successMessage && (
+          <div className="success-message" role="status" aria-live="polite">
+            {successMessage}
+          </div>
+        )}
+
+        <div className="form-fields">
+          <FormInput
+            id="full-name"
+            label="Full Name"
+            type="text"
+            value={formData.fullName}
+            onChange={handleInputChange}
+            name="fullName"
+            placeholder="John Doe"
+            error={errors.fullName}
+            required
+            autoComplete="name"
+          />
+
+          <FormInput
+            id="email"
+            label="Email Address"
+            type="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            name="email"
+            placeholder="you@example.com"
+            error={errors.email}
+            required
+            autoComplete="email"
+          />
+
+          <FormInput
+            id="phone"
+            label="Phone Number"
+            type="tel"
+            value={formData.phone}
+            onChange={handleInputChange}
+            name="phone"
+            placeholder="9876543210 (10-digit mobile number)"
+            error={errors.phone}
+            required
+            autoComplete="tel"
+            pattern="[0-9]{10}"
+          />
+
+          <div>
+            <FormInput
+              id="password"
+              label="Create Password"
+              type="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              name="password"
+              placeholder="At least 8 characters"
+              error={errors.password}
+              required
+              autoComplete="new-password"
+            />
+
+            {formData.password && (
+              <div className="password-strength-container">
+                <div className="strength-bar">
+                  <div
+                    className={`strength-indicator strength-${passwordStrength}`}
+                  ></div>
+                </div>
+                <p className={`strength-text strength-text-${passwordStrength}`}>
+                  Password strength: <strong>{passwordStrength}</strong>
+                </p>
+              </div>
+            )}
+          </div>
+
+          <FormInput
+            id="confirm-password"
+            label="Confirm Password"
+            type="password"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            name="confirmPassword"
+            placeholder="Re-enter your password"
+            error={errors.confirmPassword}
+            required
+            autoComplete="new-password"
+          />
+
+          <FormCheckbox
+            id="agree-terms"
+            labelElement={
+              <>
+                I agree to the{' '}
+                <button
+                  type="button"
+                  className="policy-link"
+                  onClick={() => onNavigate && onNavigate('terms')}
+                >
+                  Terms & Conditions
+                </button>
+                {' '}and{' '}
+                <button
+                  type="button"
+                  className="policy-link"
+                  onClick={() => onNavigate && onNavigate('privacy')}
+                >
+                  Privacy Policy
+                </button>
+              </>
+            }
+            checked={formData.agreeToTerms}
+            onChange={handleInputChange}
+            name="agreeToTerms"
+            required
+            error={errors.agreeToTerms}
+          />
+        </div>
+
+        <Button
+          variant="primary"
+          size="large"
+          fullWidth
+          type="submit"
+          disabled={isLoading || !formData.agreeToTerms}
+        >
+          {isLoading ? 'Creating Account...' : 'Create Account'}
+        </Button>
+
+        <div className="form-divider">
+          <span>OR</span>
+        </div>
+
+        <p className="already-have-account">
+          Already have an account?{' '}
+          <button
+            type="button"
+            className="login-text-link"
+            onClick={() => onNavigate && onNavigate('login')}
+          >
+            Login
+          </button>
+        </p>
+
+        <div className="security-notice">
+          <p className="security-text">
+            <span className="lock-icon">🔒</span>
+            Your data is encrypted and protected
+          </p>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+

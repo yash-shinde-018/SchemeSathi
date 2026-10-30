@@ -1,0 +1,390 @@
+﻿/**
+ * Explore Categories Section Styles - Premium Modern Grid Design
+ * Perfect grid alignment with equal-height cards and smooth interactions
+ */
+
+.explore-categories {
+  padding: 4rem 0;
+  background: transparent;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .explore-categories {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .explore-categories {
+    padding: 5rem 0 6rem 0;
+  }
+}
+
+/* ============================================================
+   Section Header - Centered with Proper Spacing
+   ============================================================ */
+
+.explore-categories__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-categories__header {
+    animation: none;
+  }
+
+  .explore-categories__card {
+    animation: none;
+  }
+
+  .explore-categories__card:hover,
+  .explore-categories__card:active {
+    transform: none;
+  }
+}
+
+.explore-categories__heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.explore-categories__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Categories Grid - Perfect Alignment with CSS Grid
+   ============================================================ */
+
+.explore-categories__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 1rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  perspective: 1000px;
+}
+
+/* Mobile: 1 column */
+@media (min-width: 480px) {
+  .explore-categories__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .explore-categories__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop: 3 columns (3+3+2 grid for 8 categories) */
+@media (min-width: 1024px) {
+  .explore-categories__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+}
+
+/* ============================================================
+   Card Wrapper - Equal Height Cards
+   ============================================================ */
+
+.explore-categories__card-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+/* ============================================================
+   Category Card - Premium Design with Shadows
+   ============================================================ */
+
+.explore-categories__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+  padding: 1.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  overflow: visible;
+  animation: floatCard 5s ease-in-out infinite;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+/* Gradient accent on top (hidden by default) */
+.explore-categories__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-main) 0%, var(--color-secondary) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect - lift with enhanced shadow and 3D tilt */
+.explore-categories__card:hover {
+  border-color: var(--color-primary-main);
+  box-shadow: 0 24px 48px rgba(67, 56, 202, 0.15);
+  transform: translateY(-20px) rotateX(5deg) rotateY(-5deg);
+}
+
+.explore-categories__card:hover::before {
+  opacity: 1;
+}
+
+/* Focus state for accessibility */
+.explore-categories__card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.3);
+  border-color: var(--color-primary-main);
+}
+
+/* Active state */
+.explore-categories__card:active {
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   Card Content - Perfect Typography Hierarchy
+   ============================================================ */
+
+.explore-categories__card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.explore-categories__card-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  display: block;
+}
+
+/* ============================================================
+   Section Footer - Centered CTA Text with Bounce Animation
+   ============================================================ */
+
+.explore-categories__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.explore-categories__more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-categories__more-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary-main);
+  animation: bounce 2s ease-in-out infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.explore-categories__more-text:hover {
+  text-shadow: 0 0 12px rgba(67, 56, 202, 0.3);
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-categories__more-text {
+    animation: none;
+  }
+
+  .explore-categories__more-text:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Mobile Responsive - Proper Spacing
+   ============================================================ */
+
+@media (max-width: 479px) {
+  .explore-categories {
+    padding: 3rem 0;
+  }
+
+  .explore-categories__header {
+    margin-bottom: 2rem;
+  }
+
+  .explore-categories__heading {
+    font-size: 1.75rem;
+  }
+
+  .explore-categories__subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .explore-categories__grid {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .explore-categories__card {
+    padding: 1.25rem;
+  }
+
+  .explore-categories__card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+  .explore-categories__card-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  display: block;
+}
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .explore-categories {
+    background: transparent;
+  }
+
+  .explore-categories__card {
+    page-break-inside: avoid;
+    border-color: var(--color-border);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .explore-categories__card::before {
+    display: none;
+  }
+
+  .explore-categories__card:hover {
+    box-shadow: none;
+  }
+
+  .explore-categories__heading {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: var(--color-text-primary);
+  }
+
+  .explore-categories__more-text {
+    animation: none;
+    color: var(--color-text-primary);
+  }
+}
+
+

@@ -1,0 +1,286 @@
+/**
+ * Hero Section Styles - Redesigned to Match Design Image
+ * Left side text content with trust badges
+ * Right side orbital category icons around central card
+ */
+
+.hero {
+  background: transparent;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl) var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: var(--spacing-3xl) var(--spacing-xl);
+  }
+}
+
+/* ============================================================
+   Hero Wrapper - Grid Layout
+   ============================================================ */
+
+.hero__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero__wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__wrapper {
+    gap: var(--spacing-3xl);
+  }
+}
+
+/* ============================================================
+   Content - Left Side
+   ============================================================ */
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  z-index: 10;
+  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__content {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Eyebrow */
+.hero__eyebrow {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+/* Headline */
+.hero__headline {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 1024px) {
+  .hero__headline {
+    font-size: 3rem;
+  }
+}
+
+/* Headline accent - gradient text "Made for You" */
+.hero__headline-accent {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Subheading */
+.hero__subheading {
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .hero__subheading {
+    font-size: 1.0625rem;
+  }
+}
+
+/* ============================================================
+   CTA Button Section
+   ============================================================ */
+
+.hero__cta {
+  display: flex;
+  margin-top: var(--spacing-md);
+}
+
+.hero__cta button {
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+.hero__cta button:hover {
+  background: linear-gradient(135deg, var(--color-primary-hover), var(--color-secondary-hover));
+}
+
+/* ============================================================
+   Trust Badges Section
+   ============================================================ */
+
+.hero__badges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+@media (min-width: 480px) {
+  .hero__badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__badges {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+}
+
+.hero__badge {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.hero__badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.hero__badge-title {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.hero__badge-subtitle {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Visual - Right Side
+   ============================================================ */
+
+.hero__visual {
+  display: none;
+  position: relative;
+  height: 500px;
+  min-height: 400px;
+}
+
+@media (min-width: 768px) {
+  .hero__visual {
+    display: block;
+  }
+}
+
+.hero__visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: blur(0.5px);
+  opacity: 1;
+}
+
+/* ============================================================
+   Mobile Adjustments
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .hero__wrapper {
+    gap: var(--spacing-2xl);
+  }
+
+  .hero__headline {
+    font-size: 1.75rem;
+  }
+
+  .hero__eyebrow {
+    font-size: var(--font-size-caption);
+  }
+
+  .hero__badges {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .hero__badge {
+    gap: var(--spacing-md);
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .hero {
+    background: var(--color-surface);
+    min-height: auto;
+    page-break-inside: avoid;
+  }
+
+  .hero__content,
+  .hero__headline,
+  .hero__subheading {
+    color: var(--color-text-primary);
+  }
+
+  .hero__visual,
+  .hero__glow {
+    display: none;
+  }
+}

@@ -1,0 +1,914 @@
+/* ============================================================
+   SCHEMESATHI RESPONSIVE TYPOGRAPHY
+   Mobile-first scaling with proper line lengths and readability
+   ============================================================ */
+
+@import './design-tokens.css';
+
+/* ============================================================
+   MOBILE-FIRST TYPOGRAPHY (360px+)
+   ============================================================ */
+
+html {
+  font-size: 16px; /* Base size for rem calculations */
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Headings - Mobile Base Sizes */
+
+h1 {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  font-family: var(--font-family-heading);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+h3 {
+  font-family: var(--font-family-heading);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+h4 {
+  font-family: var(--font-family-heading);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+h5 {
+  font-family: var(--font-family-heading);
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+h6 {
+  font-family: var(--font-family-heading);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Body Text - Mobile */
+
+p {
+  font-size: 14px;
+  line-height: var(--line-height-body);
+  margin-bottom: var(--spacing-md);
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Captions & Small Text */
+
+.caption,
+small,
+.text-sm,
+figcaption {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+/* Extra Small Text */
+
+.text-xs {
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--color-text-muted);
+}
+
+/* Large Text (for emphasis) */
+
+.text-lg,
+.lead {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Extra Large Text */
+
+.text-xl {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Links - Mobile */
+
+a {
+  color: var(--color-primary-main);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--color-primary-main);
+}
+
+/* Lists - Mobile */
+
+ul,
+ol {
+  margin-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-body);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+dt {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+}
+
+dd {
+  margin-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-body);
+}
+
+/* Code & Pre - Mobile */
+
+code,
+kbd,
+samp {
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  background-color: var(--color-gray-100);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+pre {
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: var(--color-gray-100);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Blockquote - Mobile */
+
+blockquote {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  border-left: 4px solid var(--color-primary-main);
+  padding-left: var(--spacing-lg);
+  margin-left: 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+blockquote p {
+  margin-bottom: var(--spacing-sm);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong & Emphasis - Mobile */
+
+strong,
+.strong,
+b {
+  font-weight: var(--font-weight-bold);
+}
+
+em,
+.italic,
+i {
+  font-style: italic;
+}
+
+mark,
+.mark {
+  background-color: #FFF3CD;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+/* Abbreviation */
+
+abbr {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* Horizontal Rule */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color-light);
+  margin: var(--spacing-2xl) 0;
+}
+
+/* ============================================================
+   MOBILE-MD TYPOGRAPHY (480px+)
+   ============================================================ */
+
+@media (min-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-size: 15px;
+    line-height: var(--line-height-body);
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  h4 {
+    font-size: 15px;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  h6 {
+    font-size: 13px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .caption,
+  small,
+  .text-sm,
+  figcaption {
+    font-size: 13px;
+  }
+
+  .text-xs {
+    font-size: 12px;
+  }
+
+  .text-lg,
+  .lead {
+    font-size: 17px;
+  }
+
+  .text-xl {
+    font-size: 19px;
+  }
+
+  code,
+  kbd,
+  samp {
+    font-size: 13px;
+  }
+
+  pre {
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
+   TABLET TYPOGRAPHY (768px+)
+   ============================================================ */
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-size: 15px;
+    line-height: var(--line-height-body);
+  }
+
+  /* Headings - Tablet Sizes */
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-md);
+  }
+
+  h4 {
+    font-size: 16px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  h5 {
+    font-size: 15px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  h6 {
+    font-size: 14px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Body Text - Tablet */
+
+  p {
+    font-size: 15px;
+    line-height: var(--line-height-body);
+    max-width: 65ch; /* Better line length for readability */
+  }
+
+  /* Text Utilities */
+
+  .caption,
+  small,
+  .text-sm,
+  figcaption {
+    font-size: 13px;
+  }
+
+  .text-xs {
+    font-size: 12px;
+  }
+
+  .text-lg,
+  .lead {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .text-xl {
+    font-size: 19px;
+    line-height: 1.5;
+  }
+
+  /* Code - Tablet */
+
+  code,
+  kbd,
+  samp {
+    font-size: 13px;
+  }
+
+  pre {
+    font-size: 13px;
+  }
+
+  /* List spacing - Tablet */
+
+  li {
+    margin-bottom: var(--spacing-md);
+  }
+
+  dd {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Blockquote - Tablet */
+
+  blockquote {
+    padding-left: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+}
+
+/* ============================================================
+   DESKTOP TYPOGRAPHY (1024px+)
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-size: 16px; /* WCAG requirement: minimum 16px */
+    line-height: var(--line-height-body);
+  }
+
+  /* Headings - Desktop Sizes */
+
+  h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.5px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-md);
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-md);
+  }
+
+  h5 {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-md);
+  }
+
+  h6 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Body Text - Desktop */
+
+  p {
+    font-size: 16px;
+    line-height: var(--line-height-body);
+    max-width: 80ch; /* Optimal line length: 40-80 characters */
+  }
+
+  /* Text Utilities - Desktop */
+
+  .caption,
+  small,
+  .text-sm,
+  figcaption {
+    font-size: 14px;
+  }
+
+  .text-xs {
+    font-size: 12px;
+  }
+
+  .text-lg,
+  .lead {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .text-xl {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  /* Code - Desktop */
+
+  code,
+  kbd,
+  samp {
+    font-size: 14px;
+  }
+
+  pre {
+    font-size: 14px;
+    padding: var(--spacing-lg);
+  }
+
+  /* List spacing - Desktop */
+
+  li {
+    margin-bottom: var(--spacing-md);
+  }
+
+  dd {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Blockquote - Desktop */
+
+  blockquote {
+    padding-left: var(--spacing-2xl);
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    border-left-width: 6px;
+  }
+
+  /* Better typography at desktop */
+
+  strong,
+  .strong,
+  b {
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Improve readability with better spacing */
+
+  ul,
+  ol {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  dt {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  hr {
+    margin: var(--spacing-3xl) 0;
+  }
+}
+
+/* ============================================================
+   LARGE DESKTOP TYPOGRAPHY (1920px+)
+   ============================================================ */
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-size: 17px;
+    letter-spacing: 0.3px;
+  }
+
+  h1 {
+    font-size: 56px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 17px;
+    max-width: 90ch;
+  }
+
+  .caption,
+  small,
+  .text-sm,
+  figcaption {
+    font-size: 15px;
+  }
+
+  .text-lg,
+  .lead {
+    font-size: 19px;
+  }
+
+  .text-xl {
+    font-size: 21px;
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+/* Text Alignment */
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* Text Transform */
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+/* Text Weight */
+
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Text Decoration */
+
+.underline {
+  text-decoration: underline;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+/* Letter Spacing */
+
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.05em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
+}
+
+/* Text Colors */
+
+.text-primary {
+  color: var(--color-primary-main);
+}
+
+.text-primary-dark {
+  color: var(--color-primary-dark);
+}
+
+.text-primary-light {
+  color: var(--color-primary-light);
+}
+
+.text-secondary {
+  color: var(--color-secondary-main);
+}
+
+.text-muted {
+  color: var(--color-text-secondary);
+}
+
+.text-success {
+  color: var(--color-status-success);
+}
+
+.text-error {
+  color: var(--color-status-error);
+}
+
+.text-warning {
+  color: var(--color-status-warning);
+}
+
+.text-info {
+  color: var(--color-status-info);
+}
+
+/* ============================================================
+   MINIMUM TOUCH TARGET SIZES FOR ACCESSIBILITY
+   Ensure form inputs are at least 16px to prevent iOS zoom
+   ============================================================ */
+
+input,
+textarea,
+select,
+button {
+  font-size: 16px;
+  min-height: 44px;
+  padding: 8px 12px;
+}
+
+/* ============================================================
+   FOCUS STATE TYPOGRAPHY
+   ============================================================ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* ============================================================
+   PRINT TYPOGRAPHY
+   ============================================================ */
+
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: black;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    color: black;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  code {
+    border: 1px solid #999;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE LETTER SPACING FOR MOBILE
+   Reduce letter spacing on small screens for tighter display
+   ============================================================ */
+
+@media (max-width: 480px) {
+  h1 {
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    letter-spacing: -0.01em;
+  }
+
+  body {
+    letter-spacing: 0;
+  }
+}
+
+@media (min-width: 1920px) {
+  body {
+    letter-spacing: 0.3px;
+  }
+
+  h1 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ============================================================
+   LINE LENGTH OPTIMIZATION
+   Ensures readable line lengths across breakpoints
+   ============================================================ */
+
+@media (max-width: 479px) {
+  p,
+  li,
+  dd,
+  blockquote {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  p,
+  li,
+  dd,
+  blockquote {
+    max-width: 60ch;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  p,
+  li,
+  dd,
+  blockquote {
+    max-width: 65ch;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1919px) {
+  p,
+  li,
+  dd,
+  blockquote {
+    max-width: 80ch;
+  }
+}
+
+@media (min-width: 1920px) {
+  p,
+  li,
+  dd,
+  blockquote {
+    max-width: 90ch;
+  }
+}

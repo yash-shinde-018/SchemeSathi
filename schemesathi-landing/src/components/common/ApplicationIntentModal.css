@@ -1,0 +1,334 @@
+/* ==========================================================================
+   Application Intent Modal Styling - SchemeSathi
+   ========================================================================== */
+
+.intent-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 18px;
+  animation: intentFadeIn 0.25s ease-out;
+}
+
+.intent-modal-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35),
+              0 0 0 1px rgba(226, 232, 240, 0.8);
+  padding: 28px 30px;
+  overflow: hidden;
+  animation: intentSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes intentFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes intentSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Close button */
+.intent-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.intent-modal-close:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+  transform: rotate(90deg);
+}
+
+/* Header */
+.intent-modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intent-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+  margin-bottom: 12px;
+}
+
+.intent-header-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #059669;
+  margin-bottom: 6px;
+}
+
+.intent-modal-title {
+  font-size: 21px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.intent-modal-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Scheme Preview Card */
+.intent-scheme-preview {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.intent-scheme-badge-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.intent-preview-category,
+.intent-preview-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.intent-preview-category {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+}
+
+.intent-preview-level {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.intent-preview-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+
+.intent-preview-ministry {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Information note */
+.intent-info-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #065f46;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.intent-info-note i {
+  font-size: 14px;
+  color: #059669;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Options */
+.intent-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.intent-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff;
+}
+
+.intent-btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.intent-btn-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.intent-btn-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.intent-btn-desc {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.intent-btn-arrow {
+  font-size: 13px;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+/* Option YES: Vibrant Green */
+.intent-btn-yes {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-color: #86efac;
+  color: #14532d;
+}
+
+.intent-btn-yes .yes-icon {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
+}
+
+.intent-btn-yes .intent-btn-desc {
+  color: #166534;
+}
+
+.intent-btn-yes:hover {
+  transform: translateY(-2px);
+  background: #dcfce7;
+  border-color: #22c55e;
+  box-shadow: 0 10px 20px -5px rgba(34, 197, 94, 0.25);
+}
+
+.intent-btn-yes:hover .intent-btn-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Option MAYBE: Warm Amber / Slate */
+.intent-btn-maybe {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.intent-btn-maybe .maybe-icon {
+  background: #f59e0b;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.intent-btn-maybe .intent-btn-desc {
+  color: #64748b;
+}
+
+.intent-btn-maybe:hover {
+  transform: translateY(-2px);
+  background: #fffbeb;
+  border-color: #fcd34d;
+  box-shadow: 0 10px 20px -5px rgba(245, 158, 11, 0.2);
+}
+
+.intent-btn-maybe:hover .intent-btn-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Footer / Dismiss */
+.intent-footer {
+  text-align: center;
+  padding-top: 4px;
+}
+
+.intent-btn-dismiss {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.intent-btn-dismiss:hover {
+  color: #475569;
+  text-decoration: underline;
+}

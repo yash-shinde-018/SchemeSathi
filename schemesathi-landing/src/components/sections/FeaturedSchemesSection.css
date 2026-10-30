@@ -1,0 +1,327 @@
+/**
+ * Featured Schemes Section Styles - Visual Hierarchy Redesign
+ * One large featured card + three smaller supporting cards
+ */
+
+.featured-schemes {
+  padding: var(--section-padding-y-mobile) 0;
+  background: transparent;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .featured-schemes {
+    padding: var(--section-padding-y-tablet) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .featured-schemes {
+    padding: var(--section-padding-y-desktop) 0;
+  }
+}
+
+/* ============================================================
+   Section Header
+   ============================================================ */
+
+.featured-schemes__heading {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 var(--spacing-lg) 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.3px;
+}
+
+.featured-schemes__subheading {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0 0 var(--spacing-3xl) 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   Featured Grid - Masonry Layout
+   ============================================================ */
+
+.featured-schemes__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-schemes__grid {
+    animation: none;
+  }
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .featured-schemes__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Desktop: 4 columns with first card spanning 2 cols */
+@media (min-width: 1024px) {
+  .featured-schemes__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* ============================================================
+   Card Wrapper - First Card Larger
+   ============================================================ */
+
+.featured-schemes__card-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make first card span 2 columns on desktop */
+@media (min-width: 1024px) {
+  .featured-schemes__card-wrapper:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+/* ============================================================
+   Scheme Card
+   ============================================================ */
+
+.featured-schemes__scheme-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--card-padding);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-schemes__scheme-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-normal);
+  z-index: 1;
+}
+
+.featured-schemes__card-wrapper:hover .featured-schemes__scheme-card {
+  border-color: rgba(67, 56, 202, 0.2);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.featured-schemes__card-wrapper:hover .featured-schemes__scheme-card::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-schemes__card-wrapper:hover .featured-schemes__scheme-card {
+    transform: none;
+  }
+
+  .featured-schemes__scheme-card::before {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Card Header
+   ============================================================ */
+
+.featured-schemes__card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 2;
+}
+
+.featured-schemes__scheme-name {
+  font-size: var(--font-size-h4);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+.featured-schemes__agency {
+  font-size: var(--font-size-caption);
+  color: var(--color-secondary);
+  margin: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   Description
+   ============================================================ */
+
+.featured-schemes__description {
+  font-size: var(--font-size-body-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;
+}
+
+/* ============================================================
+   Section - Eligibility & Benefits
+   ============================================================ */
+
+.featured-schemes__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.featured-schemes__section-title {
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* ============================================================
+   Lists
+   ============================================================ */
+
+.featured-schemes__criteria-list,
+.featured-schemes__benefits-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.featured-schemes__criteria-list li,
+.featured-schemes__benefits-list li {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.featured-schemes__criteria-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.featured-schemes__benefits-list li::before {
+  content: '•';
+  position: absolute;
+  left: 2px;
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+/* ============================================================
+   Footer/CTA
+   ============================================================ */
+
+.featured-schemes__footer {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 2;
+}
+
+.featured-schemes__footer button {
+  flex: 1;
+}
+
+/* ============================================================
+   Mobile Responsive
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .featured-schemes {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .featured-schemes__heading {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .featured-schemes__subheading {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .featured-schemes__scheme-card {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .featured-schemes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured-schemes__card-wrapper:first-child {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .featured-schemes__scheme-card {
+    page-break-inside: avoid;
+  }
+
+  .featured-schemes__footer {
+    display: none;
+  }
+}

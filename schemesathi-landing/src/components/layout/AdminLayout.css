@@ -1,0 +1,130 @@
+/* ===================================================
+   SCHEMESATHI ADMIN LAYOUT
+   Theme: Exact Match to User Dashboard (Neumorphism & Soft Organic UI)
+   =================================================== */
+
+.admin-app-shell {
+  min-height: 100vh;
+  background-color: #ebf1ec;
+  color: #1c2a21;
+}
+
+/* Master Console Tag in Brand Header */
+.admin-master-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #e6fffa;
+  color: #0d9488;
+  border: 1px solid rgba(13, 148, 136, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Quick Add Scheme Button in Top Navbar */
+.admin-header-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.admin-header-add-btn:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.4);
+}
+
+.admin-header-add-btn i {
+  font-size: 14px;
+}
+
+/* Sidebar Bottom Status Card (Neumorphic Inset/Soft Clay) */
+.admin-sidebar-status-card {
+  margin-top: auto;
+  padding: 12px;
+  border-radius: 16px;
+  background: #edf3ee;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--neu-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-indicator-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-label-online {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0d9488;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.status-email-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #556b5d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-email-row i {
+  color: #0d9488;
+}
+
+.admin-sidebar-logout-pill {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #fbf2ef;
+  color: #b93822;
+  border: 1px solid rgba(185, 56, 34, 0.2);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-sidebar-logout-pill:hover {
+  background: #faece8;
+  color: #962612;
+}

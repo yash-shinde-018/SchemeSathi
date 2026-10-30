@@ -1,0 +1,186 @@
+/**
+ * Header Component Styles - Premium Minimal Redesign
+ * Circular navbar centered at top + Logo in top-left corner
+ */
+
+/* ============================================================
+   Logo in Top-Left Corner
+   ============================================================ */
+
+.header__logo-corner {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: calc(var(--z-index-fixed) + 2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__logo-corner-image {
+  height: 65px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+  transition: opacity var(--transition-fast);
+}
+
+/* ============================================================
+   Logo Link Styling
+   ============================================================ */
+
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: 700;
+  font-size: var(--font-size-h4);
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  letter-spacing: -0.3px;
+}
+
+.header__logo-link:hover {
+  color: var(--color-primary);
+}
+
+.header__logo-link:hover .header__logo-corner-image {
+  opacity: 0.85;
+}
+
+.header__logo-link:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.header__logo-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.header__logo-link:active {
+  color: var(--color-primary-hover);
+}
+
+/* ============================================================
+   Header - Circular Navbar at Top Center
+   ============================================================ */
+
+.header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-index-fixed);
+  min-height: 50px;
+  width: 65%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  role: banner;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: none;
+  }
+}
+
+.header--scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: var(--color-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================
+   Header Container
+   ============================================================ */
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  height: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .header__container {
+    gap: var(--spacing-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__container {
+    gap: var(--spacing-2xl);
+  }
+}
+
+/* ============================================================
+   Responsive Padding Adjustments
+   ============================================================ */
+
+/* Mobile: Extra small screens */
+@media (max-width: 359px) {
+  .header__container {
+    padding: var(--spacing-sm) var(--spacing-sm);
+    gap: var(--spacing-md);
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .header {
+    min-height: 50px;
+  }
+
+  .header__container {
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .header__container {
+    gap: var(--spacing-2xl);
+  }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+  .header {
+    position: static;
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    backdrop-filter: none;
+    border-radius: 0;
+  }
+
+  .header__logo-corner {
+    position: static;
+    margin-bottom: var(--spacing-md);
+  }
+}
