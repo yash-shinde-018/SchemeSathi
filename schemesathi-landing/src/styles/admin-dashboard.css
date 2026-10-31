@@ -345,57 +345,75 @@
   flex-shrink: 0;
 }
 
-/* Dedicated Scheme Creation Studio Header (Centered Text Content Layout) */
+/* Dedicated Scheme Creation Studio Header (Hero Banner Layout) */
 .admin-add-scheme-header-card {
-  display: grid;
-  grid-template-columns: minmax(180px, auto) 1fr minmax(180px, auto);
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-}
-
-.admin-add-scheme-header-card .admin-page-badge {
-  justify-self: start;
-  align-self: center !important;
-  margin-bottom: 0;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 160px !important;
+  min-height: 210px;
 }
 
 .admin-add-scheme-header-card .admin-page-header-info {
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
   align-items: center !important;
   text-align: center !important;
-  gap: 6px;
+  gap: 10px;
   width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.admin-add-scheme-header-card .admin-page-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center !important;
+  margin: 0 0 6px 0;
 }
 
 .admin-add-scheme-header-card .admin-page-header-info h2 {
   text-align: center !important;
-  font-size: 26px !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  color: #1b2d22 !important;
   line-height: 1.25 !important;
+  margin: 0 !important;
 }
 
 .admin-add-scheme-header-card .admin-page-header-info p {
   text-align: center !important;
+  font-size: 14.5px !important;
+  color: #556b5d !important;
+  line-height: 1.6 !important;
   max-width: 680px;
   margin: 0 auto !important;
 }
 
 .admin-add-scheme-header-card .admin-page-header-actions {
-  justify-self: end;
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
 }
 
 @media (max-width: 900px) {
   .admin-add-scheme-header-card {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 16px;
-    text-align: center;
+    padding: 32px 20px !important;
+    min-height: auto;
   }
 
-  .admin-add-scheme-header-card .admin-page-badge,
   .admin-add-scheme-header-card .admin-page-header-actions {
-    justify-self: center;
+    position: static;
+    transform: none;
+    margin-top: 16px;
+    justify-content: center;
   }
 }
 
