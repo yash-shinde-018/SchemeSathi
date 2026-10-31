@@ -933,27 +933,6 @@ export default function AdminDashboardPage() {
             <i className="fa fa-cloud-arrow-down download-icon-right"></i>
           </button>
         </div>
-
-        <div className="template-fields-guide">
-          <span className="guide-label"><i className="fa fa-circle-info"></i> Standard Columns in Template:</span>
-          <div className="guide-tags">
-            <span className="field-tag required">Scheme Official Name *</span>
-            <span className="field-tag required">Category *</span>
-            <span className="field-tag required">Government Level *</span>
-            <span className="field-tag">Applicable State / UT</span>
-            <span className="field-tag">Ministry / Department</span>
-            <span className="field-tag">Application Mode</span>
-            <span className="field-tag">Publication Status</span>
-            <span className="field-tag">Description</span>
-            <span className="field-tag">Eligibility Criteria</span>
-            <span className="field-tag">Benefits</span>
-            <span className="field-tag">Required Documents</span>
-            <span className="field-tag">Application Process</span>
-            <span className="field-tag">Official Portal URL</span>
-            <span className="field-tag">MyScheme URL</span>
-            <span className="field-tag">Search Tags</span>
-          </div>
-        </div>
       </div>
 
       {/* Step 2: Upload Filled Spreadsheet */}
