@@ -1502,7 +1502,6 @@ class AdminService:
         Generate official Scheme Import Template for bulk onboarding.
         Supports both Excel (.xlsx) and CSV (.csv) formats with sample data.
         """
-        import pandas as pd
         headers = [
             'Scheme Official Name *',
             'Category *',
@@ -1558,14 +1557,31 @@ class AdminService:
             }
         ]
 
-        df = pd.DataFrame(sample_rows, columns=headers)
-
         if file_format.lower() == 'csv':
+            import csv
             buf = io.StringIO()
-            buf.write('\ufeff')
-            df.to_csv(buf, index=False)
+            buf.write('\ufeff')  # Write UTF-8 BOM for seamless Excel compatibility on Windows
+            writer = csv.DictWriter(buf, fieldnames=headers)
+            writer.writeheader()
+            for row in sample_rows:
+                writer.writerow(row)
             return buf.getvalue().encode('utf-8-sig'), 'text/csv; charset=utf-8', 'SchemeSathi_Scheme_Import_Template.csv'
 
+        try:
+            import pandas as pd
+        except ImportError:
+            raise RuntimeError(
+                "Missing required package 'pandas'. Please install it on your server using: pip install pandas openpyxl"
+            )
+
+        try:
+            import openpyxl  # noqa: F401
+        except ImportError:
+            raise RuntimeError(
+                "Missing required package 'openpyxl'. Please install it on your server using: pip install openpyxl"
+            )
+
+        df = pd.DataFrame(sample_rows, columns=headers)
         excel_buf = io.BytesIO()
         categories = SchemeCategory.query.all()
         cat_df = pd.DataFrame([
@@ -1597,7 +1613,10 @@ class AdminService:
         Batch import schemes from an uploaded Excel (.xlsx, .xls) or CSV file.
         Validates rows, auto-maps categories, assigns unique slugs, and logs audit events.
         """
-        import pandas as pd
+        try:
+            import pandas as pd
+        except ImportError:
+            return False, "File import requires 'pandas' and 'openpyxl' packages. Please run: pip install pandas openpyxl", {'imported': [], 'skipped': []}
         try:
             filename = getattr(file_storage, 'filename', '') or 'uploaded_file'
             is_csv = filename.lower().endswith('.csv')
