@@ -5360,6 +5360,38 @@ th:hover .sort-caret {
   margin-bottom: 18px;
 }
 
+.step-card-header.is-centered {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.step-card-header.is-centered .step-badge-title-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.step-card-header.is-centered h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e3a2b;
+}
+
+.step-card-header.is-centered p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #557060;
+  line-height: 1.5;
+  max-width: 620px;
+  text-align: center;
+}
+
 .step-badge-number {
   width: 32px;
   height: 32px;
@@ -5394,7 +5426,7 @@ th:hover .sort-caret {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {

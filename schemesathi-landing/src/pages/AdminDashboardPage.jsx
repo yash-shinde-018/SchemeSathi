@@ -888,14 +888,14 @@ export default function AdminDashboardPage() {
     <div className={`scheme-import-container ${isInModal ? 'is-in-modal' : ''}`}>
       {/* Step 1: Download Official Template */}
       <div className="scheme-import-step-card">
-        <div className="step-card-header">
-          <div className="step-badge-number">1</div>
-          <div className="step-card-titles">
+        <div className="step-card-header is-centered">
+          <div className="step-badge-title-group">
+            <div className="step-badge-number">1</div>
             <h4>Download Official Scheme Onboarding Template</h4>
-            <p>
-              Pre-structured with all required fields (Description, Eligibility, Benefits, Documents, Application Process, Official URLs, Tags) and complete sample rows. The Excel workbook includes a reference sheet of all approved welfare categories.
-            </p>
           </div>
+          <p>
+            Download the pre-formatted template with sample data to onboard schemes in bulk.
+          </p>
         </div>
 
         <div className="template-download-options">
@@ -911,7 +911,7 @@ export default function AdminDashboardPage() {
             </div>
             <div className="template-btn-text">
               <span className="btn-main-title">Download Excel Template (.xlsx)</span>
-              <span className="btn-sub-title">Includes Sample Schemes + Approved Sector Category Sheet</span>
+              <span className="btn-sub-title">Includes sample data & approved categories</span>
             </div>
             <i className="fa fa-cloud-arrow-down download-icon-right"></i>
           </button>
@@ -928,7 +928,7 @@ export default function AdminDashboardPage() {
             </div>
             <div className="template-btn-text">
               <span className="btn-main-title">Download CSV Template (.csv)</span>
-              <span className="btn-sub-title">Standard comma-separated format with UTF-8 encoding</span>
+              <span className="btn-sub-title">Standard comma-separated UTF-8 format</span>
             </div>
             <i className="fa fa-cloud-arrow-down download-icon-right"></i>
           </button>
@@ -937,14 +937,14 @@ export default function AdminDashboardPage() {
 
       {/* Step 2: Upload Filled Spreadsheet */}
       <div className="scheme-import-step-card">
-        <div className="step-card-header">
-          <div className="step-badge-number">2</div>
-          <div className="step-card-titles">
+        <div className="step-card-header is-centered">
+          <div className="step-badge-title-group">
+            <div className="step-badge-number">2</div>
             <h4>Upload Completed Scheme Spreadsheet</h4>
-            <p>
-              Upload your edited sheet. The system validates entries, automatically matches sector categories, splits required documents, generates unique slugs, and publishes schemes to the catalog.
-            </p>
           </div>
+          <p>
+            Upload your completed spreadsheet to automatically validate and publish schemes to the catalog.
+          </p>
         </div>
 
         {/* Drag & Drop Upload Zone */}
