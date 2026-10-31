@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { SystemSettingsProvider } from './context/SystemSettingsContext'
 import ProtectedRoute, { AdminRoute } from './components/ProtectedRoute'
+import { useAuth } from './hooks/useAuth'
 
 // Landing Page & Public Navigation Pages
 import App from './App'
@@ -30,6 +31,30 @@ import AdminDashboardPage from './pages/AdminDashboardPage'
 
 import './index.css'
 
+/**
+ * Intelligent Explore Route:
+ * - Authenticated citizen users -> ExploreSchemes (the active Scheme Finding / Search & Filter portal)
+ * - Public / unauthenticated visitors -> PublicExplorePage (the public platform overview & guide)
+ */
+function ExploreRoute() {
+  const { isAuthenticated, isLoading } = useAuth();
+  if (isLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', gap: '12px', background: '#f8fafc' }}>
+        <i className="fa fa-spinner fa-spin" style={{ fontSize: '28px', color: '#16a34a' }}></i>
+      </div>
+    );
+  }
+  return isAuthenticated ? (
+    <ProtectedRoute>
+      <ExploreSchemes />
+    </ProtectedRoute>
+  ) : (
+    <PublicExplorePage />
+  );
+}
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -39,7 +64,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Routes>
           {/* Landing & Public Navigation Pages */}
           <Route path='/' element={<App />} />
-          <Route path='/explore' element={<PublicExplorePage />} />
+          <Route path='/explore' element={<ExploreRoute />} />
+          <Route path='/public-explore' element={<PublicExplorePage />} />
+          <Route path='/find-schemes' element={<ProtectedRoute><ExploreSchemes /></ProtectedRoute>} />
           <Route path='/how-it-works' element={<HowItWorksPage />} />
           <Route path='/contact' element={<ContactPage />} />
           <Route path='/about' element={<HowItWorksPage />} />
@@ -76,7 +103,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           />
           <Route
             path='/schemes/explore'
-            element={<PublicExplorePage />}
+            element={<ExploreRoute />}
           />
 
           {/* Scheme Details (Accessible by both Citizens and Admins) */}

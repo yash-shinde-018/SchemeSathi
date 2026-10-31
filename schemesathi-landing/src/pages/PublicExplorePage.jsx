@@ -32,17 +32,30 @@ export default function PublicExplorePage() {
                 <i className="fa fa-user-check" style={{ color: '#16a34a' }}></i>
                 <span>Logged in as <strong>{user?.first_name ? `${user.first_name} ${user.last_name || ''}` : user?.email}</strong></span>
               </div>
-              <Link to="/dashboard" style={{
-                fontSize: '13px',
-                fontWeight: 700,
-                color: '#4338ca',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px'
-              }}>
-                Go to Citizen Dashboard <i className="fa fa-arrow-right"></i>
-              </Link>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                <Link to="/find-schemes" style={{
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  color: '#15803d',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <i className="fa fa-search"></i> Open Find Schemes
+                </Link>
+                <Link to="/dashboard" style={{
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  color: '#4338ca',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  Go to Citizen Dashboard <i className="fa fa-arrow-right"></i>
+                </Link>
+              </div>
             </div>
           )}
 
