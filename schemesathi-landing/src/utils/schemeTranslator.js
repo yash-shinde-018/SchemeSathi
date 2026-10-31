@@ -433,6 +433,12 @@ export const translateAuthorityName = (auth, lang = 'en', dynamicMap = null) => 
     if (foundKey) return bundledMinistries[foundKey];
   }
 
+  // Case-insensitive fallback for AUTHORITY_TRANSLATIONS
+  const foundAuthKey = Object.keys(AUTHORITY_TRANSLATIONS).find(k => k.toLowerCase() === normalized.toLowerCase() || k.toLowerCase() === auth.toLowerCase());
+  if (foundAuthKey && AUTHORITY_TRANSLATIONS[foundAuthKey][lang]) {
+    return AUTHORITY_TRANSLATIONS[foundAuthKey][lang];
+  }
+
   if (AUTHORITY_TRANSLATIONS[normalized] && AUTHORITY_TRANSLATIONS[normalized][lang]) {
     return AUTHORITY_TRANSLATIONS[normalized][lang];
   }
@@ -481,6 +487,13 @@ export const translateAuthorityName = (auth, lang = 'en', dynamicMap = null) => 
 // 3. SCHEME NAMES / TITLES
 // =========================================================================
 export const KNOWN_SCHEME_TITLES = {
+  'Pradhan Mantri Dakshta Aur Kushalta Sampann Hitgrahi (PM-DAKSH)': {
+    hi: 'प्रधानमंत्री दक्षता और कुशलता सम्पन्न हितग्राही (पीएम-दक्ष)',
+    mr: 'पंतप्रधान दक्षता आणि कुशलता संपन्न हितग्राही (पीएम-दक्ष)',
+    ta: 'பிரதான் மந்திரி தக்ஷதா அவுர் குஷல்தா சம்பன்ன ஹித்கிராஹி (பிஎம்-தக்ஷ்)',
+    te: 'ప్రధాన మంత్రి దక్షత ఔర్ కుశలత సంపన్న హితగ్రాహి (పీఎం-దక్ష్)',
+    bn: 'প্রধানমন্ত্রী দক্ষতা ও কৌশল সম্পন্ন হিতগ্রাহী (পিএম-দক্ষ)'
+  },
   '40% Subsidy On Hank Yarn, Dyes & Chemicals Scheme': {
     hi: 'हैंक यार्न, रंग और रसायन पर 40% सब्सिडी योजना',
     mr: 'हँक यार्न, रंग आणि रसायनांवर ४०% सबसिडी योजना',

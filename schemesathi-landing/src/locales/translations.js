@@ -20,6 +20,18 @@ export const SUPPORTED_LANGUAGES = [
 
 export const translations = {
   en: {
+    // Application Intent Modal
+    intentTrackerTag: "Application Tracker",
+    intentModalTitle: "Do you want to apply for this scheme?",
+    intentModalSubtitle: "Keep track of your application progress and update your personalized recommendations.",
+    intentInfoNote: "Government applications are submitted directly on official portals. Adding this scheme to My Applications lets you record your application details, track your progress, and mark it as applied.",
+    intentYesTitle: "Yes, I want to apply",
+    intentYesDesc: "Add to My Applications as Planning to Apply",
+    intentMaybeTitle: "Maybe later",
+    intentMaybeDesc: "Save in My Applications as Considering",
+    intentDismiss: "Not now, just browsing →",
+    dismissAndProceed: "Dismiss & Proceed",
+
     // Maintenance & Urgent Announcement Banners
     queriesPausedMaintenance: 'Queries Paused (Maintenance Mode)',
     querySubmissionsPaused: 'Query Submissions Paused',
@@ -538,6 +550,18 @@ export const translations = {
   },
 
   hi: {
+    // Application Intent Modal
+    intentTrackerTag: "आवेदन ट्रैकर",
+    intentModalTitle: "क्या आप इस योजना के लिए आवेदन करना चाहते हैं?",
+    intentModalSubtitle: "अपने आवेदन की प्रगति पर नज़र रखें और अपनी व्यक्तिगत सिफ़ारिशों को अपडेट करें।",
+    intentInfoNote: "सरकारी आवेदन सीधे आधिकारिक पोर्टलों पर जमा किए जाते हैं। इस योजना को \"मेरे आवेदन\" में जोड़ने से आप अपने आवेदन विवरण रिकॉर्ड कर सकते हैं, प्रगति ट्रैक कर सकते हैं और आवेदन किए जाने पर चिह्नित कर सकते हैं।",
+    intentYesTitle: "हाँ, मैं आवेदन करना चाहता हूँ",
+    intentYesDesc: "\"मेरे आवेदन\" में \"आवेदन की योजना\" के रूप में जोड़ें",
+    intentMaybeTitle: "शायद बाद में",
+    intentMaybeDesc: "\"मेरे आवेदन\" में \"विचारधीन\" के रूप में सहेजें",
+    intentDismiss: "अभी नहीं, सिर्फ देख रहे हैं →",
+    dismissAndProceed: "खारिज करें और आगे बढ़ें",
+
     // Maintenance & Urgent Announcement Banners
     queriesPausedMaintenance: 'पूछताछ स्थगित (रखरखाव मोड)',
     querySubmissionsPaused: 'पूछताछ सबमिशन स्थगित',
@@ -1056,6 +1080,18 @@ export const translations = {
   },
 
   mr: {
+    // Application Intent Modal
+    intentTrackerTag: "अर्ज ट्रॅकर",
+    intentModalTitle: "तुम्हाला या योजनेसाठी अर्ज करायचा आहे का?",
+    intentModalSubtitle: "तुमच्या अर्जाच्या प्रगतीचा मागोवा घ्या आणि तुमच्या वैयक्तिक शिफारसी अद्यतनित करा.",
+    intentInfoNote: "शासकीय योजनांचे अर्ज थेट अधिकृत पोर्टलवर सादर केले जातात. ही योजना \"माझे अर्ज\" मध्ये जोडल्याने तुम्हाला अर्जाचे तपशील नोंदवता येतात, प्रगती ट्रॅक करता येते आणि अर्ज पूर्ण झाल्यावर तशी नोंद करता येते.",
+    intentYesTitle: "होय, मला अर्ज करायचा आहे",
+    intentYesDesc: "\"माझे अर्ज\" मध्ये \"अर्ज करण्याचे नियोजन\" म्हणून जोडा",
+    intentMaybeTitle: "कदाचित नंतर",
+    intentMaybeDesc: "\"माझे अर्ज\" मध्ये \"विचारधीन\" म्हणून जतन करा",
+    intentDismiss: "आत्ता नाही, फक्त पाहत आहे →",
+    dismissAndProceed: "रद्द करा आणि पुढे जा",
+
     // Maintenance & Urgent Announcement Banners
     queriesPausedMaintenance: 'चौकशी स्थगित (देखभाल मोड)',
     querySubmissionsPaused: 'चौकशी नोंदणी स्थगित',
@@ -1574,6 +1610,18 @@ export const translations = {
   },
 
   ta: {
+    // Application Intent Modal
+    intentTrackerTag: "விண்ணப்பக் கண்காணிப்பாளர்",
+    intentModalTitle: "இந்தத் திட்டத்திற்கு நீங்கள் விண்ணப்பிக்க விரும்புகிறீர்களா?",
+    intentModalSubtitle: "உங்கள் விண்ணப்பத்தின் முன்னேற்றத்தைக் கண்காணித்து, உங்கள் தனிப்பயனாக்கப்பட்ட பரிந்துரைகளைப் புதுப்பிக்கவும்.",
+    intentInfoNote: "அரசு விண்ணப்பங்கள் அதிகாரப்பூர்வ இணையதளங்களில் நேரடியாகச் சமர்ப்பிக்கப்படுகின்றன. இந்தத் திட்டத்தை \"எனது விண்ணப்பங்கள்\" பகுதியில் சேர்ப்பது உங்கள் விண்ணப்ப விவரங்களைப் பதிவு செய்யவும், முன்னேற்றத்தைக் கண்காணிக்கவும் உதவும்.",
+    intentYesTitle: "ஆம், நான் விண்ணப்பிக்க விரும்புகிறேன்",
+    intentYesDesc: "\"எனது விண்ணப்பங்கள்\" இல் \"விண்ணப்பிக்கத் திட்டமிடுதல்\" எனச் சேர்க்கவும்",
+    intentMaybeTitle: "பிறகு பார்க்கலாம்",
+    intentMaybeDesc: "\"எனது விண்ணப்பங்கள்\" இல் \"பரிசீலனையில்\" எனச் சேமிக்கவும்",
+    intentDismiss: "இப்போது வேண்டாம், பார்க்கிறேன் →",
+    dismissAndProceed: "மூடிவிட்டு தொடரவும்",
+
     // Maintenance & Urgent Announcement Banners
     queriesPausedMaintenance: 'விசாரணைகள் இடைநிறுத்தப்பட்டன (பராமரிப்பு பயன்முறை)',
     querySubmissionsPaused: 'கேள்வி சமர்ப்பிப்பு இடைநிறுத்தப்பட்டது',
@@ -2083,6 +2131,18 @@ export const translations = {
   },
 
   te: {
+    // Application Intent Modal
+    intentTrackerTag: "దరఖాస్తు ట్రాకర్",
+    intentModalTitle: "మీరు ఈ పథకానికి దరఖాస్తు చేసుకోవాలనుకుంటున్నారా?",
+    intentModalSubtitle: "మీ దరఖాస్తు పురోగతిని ట్రాక్ చేయండి మరియు మీ వ్యక్తిగతీకరించిన సిఫార్సులను అప్‌డేట్ చేయండి.",
+    intentInfoNote: "ప్రభుత్వ దరఖాస్తులు నేరుగా అధికారిక పోర్టల్‌లలో సమర్పించబడతాయి. ఈ పథకాన్ని \"నా దరఖాస్తులు\"కు జోడించడం ద్వారా మీ దరఖాస్తు వివరాలను నమోదు చేయవచ్చు మరియు పురోగతిని ట్రాక్ చేయవచ్చు.",
+    intentYesTitle: "అవును, నేను దరఖాస్తు చేయాలనుకుంటున్నాను",
+    intentYesDesc: "\"నా దరఖాస్తులు\"లో \"దరఖాస్తు ప్రణాళిక\"గా జోడించండి",
+    intentMaybeTitle: "తర్వాత చూద్దాం",
+    intentMaybeDesc: "\"నా దరఖాస్తులు\"లో \"పరిశీలనలో\"గా సేవ్ చేయండి",
+    intentDismiss: "ఇప్పుడు వద్దు, చూస్తున్నాను →",
+    dismissAndProceed: "రద్దు చేసి కొనసాగించండి",
+
     // Maintenance & Urgent Announcement Banners
     queriesPausedMaintenance: 'ప్రశ్నలు నిలిపివేయబడ్డాయి (నిర్వహణ మోడ్)',
     querySubmissionsPaused: 'ప్రశ్నల సమర్పణ నిలిపివేయబడింది',
@@ -2592,6 +2652,18 @@ export const translations = {
   },
 
   bn: {
+    // Application Intent Modal
+    intentTrackerTag: "আবেদন ট্র্যাকার",
+    intentModalTitle: "আপনি কি এই প্রকল্পের জন্য আবেদন করতে চান?",
+    intentModalSubtitle: "আপনার আবেদনের অগ্রগতি ট্র্যাক করুন এবং আপনার ব্যক্তিগতকৃত সুপারিশগুলি আপডেট করুন।",
+    intentInfoNote: "সরকারি আবেদনগুলি সরাসরি অফিসিয়াল পোর্টালে জমা দেওয়া হয়। এই প্রকল্পটি \"আমার আবেদনসমূহ\"-এ যোগ করলে আপনি আবেদনের বিবরণ রেকর্ড করতে এবং অগ্রগতি ট্র্যাক করতে পারবেন।",
+    intentYesTitle: "হ্যাঁ, আমি আবেদন করতে চাই",
+    intentYesDesc: "\"আমার আবেদনসমূহ\"-এ \"আবেদনের পরিকল্পনা\" হিসেবে যোগ করুন",
+    intentMaybeTitle: "পরে ভাবব",
+    intentMaybeDesc: "\"আমার আবেদনসমূহ\"-এ \"বিবেচনাধীন\" হিসেবে সংরক্ষণ করুন",
+    intentDismiss: "এখন নয়, শুধু দেখছি →",
+    dismissAndProceed: "বাতিল করে এগিয়ে যান",
+
     // Maintenance & Urgent Announcement Banners
     queriesPausedMaintenance: 'অনুসন্ধান স্থগিত (রক্ষণাবেক্ষণ মোড)',
     querySubmissionsPaused: 'প্রশ্ন জমা দেওয়া স্থগিত',
