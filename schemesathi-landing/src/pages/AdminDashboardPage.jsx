@@ -6211,11 +6211,11 @@ export default function AdminDashboardPage() {
             {activeTab === 'add-scheme' && (
               <div className="admin-add-scheme-view">
                 {/* Dedicated Add Scheme Page Header */}
-                <div className="admin-page-header-card">
+                <div className="admin-page-header-card admin-add-scheme-header-card">
+                  <div className="admin-page-badge">
+                    <i className="fa fa-circle-plus"></i> Scheme Creation Studio
+                  </div>
                   <div className="admin-page-header-info">
-                    <div className="admin-page-badge">
-                      <i className="fa fa-circle-plus"></i> Scheme Creation Studio
-                    </div>
                     <h2>Add New Government Scheme</h2>
                     <p>
                       Publish an official Central or State welfare initiative, financial subsidy, or scholarship to the master citizen discovery repository.
