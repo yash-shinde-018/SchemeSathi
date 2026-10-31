@@ -4,8 +4,8 @@
  */
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (
-  typeof window !== 'undefined' && window.location.hostname === '127.0.0.1'
-    ? 'http://127.0.0.1:5000/api'
+  typeof window !== 'undefined'
+    ? `http://${window.location.hostname || 'localhost'}:5000/api`
     : 'http://localhost:5000/api'
 );
 
@@ -57,6 +57,12 @@ async function makeRequest(endpoint, options = {}) {
     return data;
   } catch (error) {
     console.error('[apiClient] Error:', error);
+    if (error.name === 'TypeError' && (error.message.includes('fetch') || error.message.includes('NetworkError'))) {
+      const connErr = new Error('Unable to connect to SchemeSathi server. Please ensure the backend server is running on port 5000.');
+      connErr.status = 0;
+      connErr.code = 'CONNECTION_REFUSED';
+      throw connErr;
+    }
     throw error;
   }
 }

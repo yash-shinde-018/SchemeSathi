@@ -103,8 +103,41 @@ export default function SavedSchemesPage() {
         </div>
 
         {error && (
-          <div style={{ padding: '12px 18px', background: '#fee2e2', color: '#b91c1c', borderRadius: '8px', fontSize: '14px' }}>
-            {error}
+          <div className="saved-error-banner" style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            padding: '14px 20px',
+            background: '#fee2e2',
+            color: '#b91c1c',
+            borderRadius: '10px',
+            fontSize: '14px',
+            marginBottom: '16px',
+            border: '1px solid #fecaca',
+            boxShadow: '0 2px 8px rgba(185, 28, 28, 0.08)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <i className="fa fa-triangle-exclamation" style={{ fontSize: '16px' }}></i>
+              <span>{error}</span>
+            </div>
+            <button
+              type="button"
+              onClick={fetchSavedSchemes}
+              style={{
+                background: '#dc2626',
+                color: '#fff',
+                border: 'none',
+                padding: '6px 14px',
+                borderRadius: '6px',
+                fontSize: '13px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              <i className="fa fa-rotate-right" style={{ marginRight: '6px' }}></i> {t('tryAgain', 'Try Again')}
+            </button>
           </div>
         )}
 

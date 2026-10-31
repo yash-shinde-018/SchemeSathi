@@ -191,7 +191,11 @@ class SchemeService:
         """Get user's saved schemes."""
         saved = SavedScheme.query.filter_by(user_id=user_id).paginate(page=page, per_page=limit, error_out=False)
         
-        schemes_data = [SchemeService._scheme_to_dict(s.scheme) for s in saved.items]
+        schemes_data = [
+            SchemeService._scheme_to_dict(s.scheme)
+            for s in saved.items
+            if getattr(s, 'scheme', None) and not getattr(s.scheme, 'deleted_at', None)
+        ]
         
         return schemes_data, saved.total
     
@@ -497,6 +501,8 @@ class SchemeService:
     @staticmethod
     def _scheme_to_dict(scheme: Scheme) -> Dict:
         """Convert scheme to dictionary (list view)."""
+        if not scheme:
+            return {}
         cat_dict = None
         cat_name = ''
         if getattr(scheme, 'category', None):
