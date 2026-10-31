@@ -1164,23 +1164,22 @@ def export_scheme_catalog_report():
 @require_admin
 def export_citizen_filing_report():
     """
-    Export comprehensive Citizen Filing Report (CSV) containing ALL details about citizens:
-    id, email, first_name, last_name, phone, role, status, registered_at, last_login,
-    gender, date_of_birth, state, district, city, occupation, education, income,
-    social_category, disability_status, residence_type, profile_completion,
-    total_saved_schemes, total_applied_schemes, applications_and_statuses.
+    Export comprehensive Citizen Directory Report (.xlsx or .csv) containing all citizen details:
+    id, email, full name, phone, role, status, demographics, income, education, and dates.
+    Default format is Excel (.xlsx) for auto-sized readable columns without hash signs.
     """
     try:
-        csv_data = AdminService.generate_citizen_filing_csv()
-        date_str = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
-        filename = f"SchemeSathi_Citizen_Filing_Full_Report_{date_str}.csv"
+        file_format = request.args.get('format', 'xlsx').lower()
+        if file_format not in ['xlsx', 'csv']:
+            file_format = 'xlsx'
         
+        file_bytes, mimetype, filename = AdminService.generate_citizen_report_file(file_format=file_format)
         return Response(
-            csv_data,
-            mimetype="text/csv; charset=utf-8",
+            file_bytes,
+            mimetype=mimetype,
             headers={
                 "Content-Disposition": f"attachment; filename={filename}",
-                "Content-Type": "text/csv; charset=utf-8",
+                "Content-Type": mimetype,
                 "Cache-Control": "no-cache, no-store, must-revalidate"
             }
         )

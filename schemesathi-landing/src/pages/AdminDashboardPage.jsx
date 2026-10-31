@@ -551,15 +551,15 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Export Citizen Details & Demographic Report (CSV) with ALL user details
+  // Export Citizen Details & Demographic Report with ALL user details
   const handleExportCitizenReport = async () => {
     try {
-      showToast('Generating Citizen Details report (profiles, demographics & account status)...');
+      showToast('Generating Citizen Details Report (auto-sized columns, clean formatting)...');
       await triggerReportDownload(
-        '/admin/reports/citizens',
-        `SchemeSathi_Citizen_Details_Report_${new Date().toISOString().slice(0, 10)}.csv`
+        '/admin/reports/citizens?format=xlsx',
+        `SchemeSathi_Citizen_Details_Report_${new Date().toISOString().slice(0, 10)}.xlsx`
       );
-      showToast('Citizen Details Report downloaded successfully! (Cleanly formatted & Excel-ready)');
+      showToast('Citizen Details Report downloaded successfully! (Excel .xlsx with auto-expanded columns)');
     } catch (err) {
       console.error('Export error:', err);
       showToast('Failed to download citizen report: ' + (err.message || 'Network error'));
@@ -2376,14 +2376,14 @@ export default function AdminDashboardPage() {
                       type="button" 
                       className="report-download-btn" 
                       onClick={handleExportCitizenReport}
-                      title="Download complete citizen profiles, demographics & account status (CSV)"
+                      title="Download complete citizen profiles, demographics & account status (Excel)"
                     >
                       <div className="report-btn-icon-wrap purple">
-                        <i className="fa fa-file-invoice"></i>
+                        <i className="fa fa-file-excel"></i>
                       </div>
                       <div className="report-btn-info">
                         <strong>Citizen Details Report</strong>
-                        <span>Export citizen profiles, demographics & status (CSV)</span>
+                        <span>Export clean, auto-sized citizen directory (.xlsx)</span>
                       </div>
                     </button>
                     <button 

@@ -12,7 +12,7 @@ import io
 import csv
 import json
 from datetime import datetime
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any
 
 
 class AdminService:
@@ -1252,8 +1252,22 @@ class AdminService:
         return val
 
     @staticmethod
+    def _format_report_phone(phone) -> str:
+        """Format 10-digit Indian phone numbers cleanly as '+91 XXXXX XXXXX' to prevent Excel scientific notation."""
+        if not phone:
+            return 'Not Provided'
+        clean = re.sub(r'\D', '', str(phone))
+        if len(clean) == 10:
+            return f"+91 {clean[:5]} {clean[5:]}"
+        elif len(clean) == 12 and clean.startswith('91'):
+            return f"+{clean[:2]} {clean[2:7]} {clean[7:]}"
+        elif clean:
+            return f"+91 {clean}"
+        return 'Not Provided'
+
+    @staticmethod
     def _format_report_date(dt) -> str:
-        """Format datetime into clean, spreadsheet-friendly 'YYYY-MM-DD hh:mm AM/PM'."""
+        """Format datetime into clean, human-readable 'DD-Mon-YYYY hh:mm AM/PM'."""
         if not dt:
             return ""
         if isinstance(dt, str):
@@ -1261,7 +1275,62 @@ class AdminService:
                 dt = datetime.fromisoformat(dt.replace('Z', ''))
             except Exception:
                 return dt
-        return dt.strftime('%Y-%m-%d %I:%M %p')
+        return dt.strftime('%d-%b-%Y %I:%M %p')
+
+    @staticmethod
+    def _export_to_excel_workbook(sheet_title: str, headers: List[str], rows: List[List[Any]], filename_prefix: str) -> Tuple[bytes, str, str]:
+        """Generate professionally styled, auto-column-width Excel workbook (.xlsx)."""
+        import openpyxl
+        from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+        from openpyxl.utils import get_column_letter
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = sheet_title[:31]
+        ws.views.sheetView[0].showGridLines = True
+
+        header_fill = PatternFill(start_color="166534", end_color="166534", fill_type="solid")
+        header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
+        center_align = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        left_align = Alignment(horizontal="left", vertical="center")
+        thin_border = Border(
+            left=Side(style='thin', color='E5E7EB'),
+            right=Side(style='thin', color='E5E7EB'),
+            top=Side(style='thin', color='E5E7EB'),
+            bottom=Side(style='thin', color='E5E7EB')
+        )
+        alt_fill = PatternFill(start_color="F9FAFB", end_color="F9FAFB", fill_type="solid")
+
+        ws.append(headers)
+        for cell in ws[1]:
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = center_align
+
+        for row_idx, r in enumerate(rows, start=2):
+            ws.append(r)
+            row_fill = alt_fill if row_idx % 2 == 0 else PatternFill(fill_type=None)
+            for col_idx, cell in enumerate(ws[row_idx], start=1):
+                cell.border = thin_border
+                if row_fill.fill_type:
+                    cell.fill = row_fill
+                cell.alignment = left_align
+                val_str = str(cell.value or '')
+                if val_str.startswith('+91') or val_str.startswith("'"):
+                    cell.number_format = '@'
+
+        for col in ws.columns:
+            max_len = max(len(str(cell.value or '')) for cell in col)
+            col_letter = get_column_letter(col[0].column)
+            ws.column_dimensions[col_letter].width = min(max(max_len + 4, 14), 50)
+
+        ws.row_dimensions[1].height = 28
+        ws.freeze_panes = "A2"
+
+        excel_buf = io.BytesIO()
+        wb.save(excel_buf)
+        date_str = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
+        return excel_buf.getvalue(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', f"{filename_prefix}_{date_str}.xlsx"
 
     @staticmethod
     def generate_schemes_catalog_csv() -> str:
@@ -1341,16 +1410,7 @@ class AdminService:
         return output.getvalue()
 
     @staticmethod
-    def generate_citizen_filing_csv() -> str:
-        """
-        Generate complete Citizen Details report with user profile and demographic information.
-        No scheme filing intent column as requested.
-        Cleanly formatted: single-line per row, clean dates, clear currency amounts.
-        """
-        output = io.StringIO()
-        output.write('\ufeff')
-        writer = csv.writer(output, quoting=csv.QUOTE_MINIMAL)
-
+    def _build_citizen_report_rows():
         headers = [
             'Citizen ID',
             'Full Name',
@@ -1373,31 +1433,34 @@ class AdminService:
             'Registered Date',
             'Last Login Date'
         ]
-        writer.writerow(headers)
 
         users = User.query.filter(User.deleted_at.is_(None)).order_by(User.id.asc()).all()
-        # Pre-load all user profiles in one fast dictionary query
         profiles = {p.user_id: p for p in UserProfile.query.filter(UserProfile.deleted_at.is_(None)).all()}
 
+        rows = []
         for u in users:
             prof = profiles.get(u.id)
             full_name = f"{u.first_name or ''} {u.last_name or ''}".strip() or 'Citizen'
-            income_val = f"₹{prof.income:,.2f}" if prof and prof.income is not None else 'Not Disclosed'
+            income_val = f"₹{int(prof.income):,}" if prof and prof.income is not None else 'Not Disclosed'
+            dob_val = prof.date_of_birth.strftime('%d-%b-%Y') if prof and prof.date_of_birth else 'Not Provided'
+            dist_val = prof.district.strip().title() if prof and prof.district else 'Not Provided'
+            city_val = prof.city.strip().title() if prof and prof.city else 'Not Provided'
+            edu_val = prof.education.replace('_', ' ').strip().title() if prof and prof.education else 'Not Provided'
 
-            row = [
+            rows.append([
                 u.id,
                 AdminService._clean_report_text(full_name),
                 AdminService._clean_report_text(u.email),
-                AdminService._clean_report_text(u.phone or 'Not Provided'),
+                AdminService._format_report_phone(u.phone),
                 AdminService._clean_report_text(u.role or 'USER'),
                 AdminService._clean_report_text(u.account_status or 'ACTIVE'),
                 AdminService._clean_report_text(prof.gender if prof and prof.gender else 'Unspecified'),
-                prof.date_of_birth.strftime('%Y-%m-%d') if prof and prof.date_of_birth else 'Not Provided',
+                dob_val,
                 AdminService._clean_report_text(prof.state if prof and prof.state else 'Not Provided'),
-                AdminService._clean_report_text(prof.district if prof and prof.district else 'Not Provided'),
-                AdminService._clean_report_text(prof.city if prof and prof.city else 'Not Provided'),
-                AdminService._clean_report_text(prof.occupation if prof and prof.occupation else 'Not Provided'),
-                AdminService._clean_report_text(prof.education if prof and prof.education else 'Not Provided'),
+                dist_val,
+                city_val,
+                AdminService._clean_report_text(prof.occupation.title() if prof and prof.occupation else 'Not Provided'),
+                edu_val,
                 income_val,
                 AdminService._clean_report_text(prof.social_category if prof and prof.social_category else 'Not Specified'),
                 AdminService._clean_report_text(prof.disability_status if prof and prof.disability_status else 'None'),
@@ -1405,10 +1468,43 @@ class AdminService:
                 f"{prof.profile_completion_percentage}%" if prof and prof.profile_completion_percentage is not None else '0%',
                 AdminService._format_report_date(u.created_at),
                 AdminService._format_report_date(u.last_login) if u.last_login else 'Never Logged In'
-            ]
-            writer.writerow(row)
+            ])
 
+        return headers, rows
+
+    @staticmethod
+    def generate_citizen_filing_csv() -> str:
+        """
+        Generate complete Citizen Details report with user profile and demographic information.
+        Cleanly formatted: single-line per row, clean dates, formatted phone numbers.
+        """
+        headers, rows = AdminService._build_citizen_report_rows()
+        output = io.StringIO()
+        output.write('\ufeff')
+        writer = csv.writer(output, quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(headers)
+        for row in rows:
+            writer.writerow(row)
         return output.getvalue()
+
+    @staticmethod
+    def generate_citizen_report_file(file_format: str = 'xlsx') -> Tuple[bytes, str, str]:
+        """
+        Generate complete Citizen Details report in either Excel (.xlsx) or CSV format.
+        Excel format includes auto-fitted columns, bold green header, and text-safe phone numbers.
+        """
+        headers, rows = AdminService._build_citizen_report_rows()
+        if file_format.lower() == 'csv':
+            output = io.StringIO()
+            output.write('\ufeff')
+            writer = csv.writer(output, quoting=csv.QUOTE_MINIMAL)
+            writer.writerow(headers)
+            for row in rows:
+                writer.writerow(row)
+            date_str = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
+            return output.getvalue().encode('utf-8-sig'), 'text/csv; charset=utf-8', f"SchemeSathi_Citizen_Details_Report_{date_str}.csv"
+
+        return AdminService._export_to_excel_workbook("Citizen_Directory", headers, rows, "SchemeSathi_Citizen_Details_Report")
 
     @staticmethod
     def generate_system_audit_csv() -> str:
